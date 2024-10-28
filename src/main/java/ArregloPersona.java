@@ -1,31 +1,31 @@
 public class ArregloPersona {
     private int indice;
-    private TipoPersona[] personas;
+    private Persona[] personas;
     
     public ArregloPersona(int multitud){
-        this.personas = new TipoPersona[multitud];
+        this.personas = new Persona[multitud];
         this.indice = 0;
     }
     
-    public void agregarPersona(TipoPersona persona){
-        if(indice < personas.length){
-            personas[indice] = persona;
+    public void agregarPersona(Persona persona){
+        if(indice < this.personas.length){
+            this.personas[indice] = persona;
             indice++;
         }
     }
     
-    public TipoPersona buscarPersona(String DNI){
+    public Persona buscarPersona(String DNI){
         for(int i = 0; i < indice; i++){
-            if(personas[i].getDNI().equalsIgnoreCase(DNI)){
-                return personas[i];
+            if(this.personas[i].getDNI().equalsIgnoreCase(DNI)){
+                return this.personas[i];
             }   
         }
         return null;
     }
     
-    public TipoPersona[] mostrarPersonas() {
-        TipoPersona[] listaPersonas = new TipoPersona[indice];
-        System.arraycopy(personas, 0, listaPersonas, 0, indice);
+    public Persona[] mostrarPersonas() {
+        Persona[] listaPersonas = new Persona[indice];
+        System.arraycopy(this.personas, 0, listaPersonas, 0, indice);
         return listaPersonas;
     }
 }

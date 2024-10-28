@@ -15,6 +15,11 @@ public class Libro {
         this.ejemplares = new ArregloEjemplar(capacidad);
     }
 
+    public Libro() {
+    }
+    
+    
+
     public String getNombre() {
         return nombre;
     }
