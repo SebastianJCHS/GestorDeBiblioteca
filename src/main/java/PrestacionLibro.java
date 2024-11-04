@@ -7,6 +7,7 @@ public class PrestacionLibro {
     private Cliente cliente; 
     private Libro libro;
     private Multa multa;
+    
 
     public PrestacionLibro(String fechaPrestamo, String fechaDevolucion, Cliente cliente, Libro libro) {
         this.fechaPrestamo = fechaPrestamo;
@@ -14,7 +15,6 @@ public class PrestacionLibro {
         this.cliente = cliente;
         this.libro = libro;
         this.multa = null; 
-        cliente.agregarPrestamo(this); 
     }
 
     public Cliente getCliente() {
@@ -48,4 +48,30 @@ public class PrestacionLibro {
     public Multa getMulta() {
         return multa;
     }
+
+    public String getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(String fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public String getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(String fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+    
+    
 }

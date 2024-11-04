@@ -17,17 +17,4 @@ public class Administrador extends Persona{
         this.ID_admin = ID_admin;
     }
     
-    
-    public void CambiarCarnetInactivo(Carnet carnet){
-        if(carnet != null){
-            carnet.isinactivo();
-        }
-    }
-    
-    public void BloquearCarnet(Carnet carnet){
-        if(carnet != null){
-            carnet.isbloqueado();
-        }
-    }
-
 }

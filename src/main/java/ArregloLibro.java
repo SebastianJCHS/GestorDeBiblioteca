@@ -32,5 +32,28 @@ public class ArregloLibro {
         }
     }
     
+    public void cambiarEstadoDisponible(int IdEjemplar){
+        for (int i = 0; i <this.libros.length; i++) {
+            if (this.libros[i] != null && this.libros[i].buscarLibroporIdEjemplar(IdEjemplar) == true){
+                this.libros[i].cambiarDisponible(IdEjemplar);
+            }
+        }
+    }
+    
+    public void cambiarEstadoPrestado(int IdEjemplar){
+        for (int i = 0; i <this.libros.length; i++) {
+            if (this.libros[i] != null && this.libros[i].buscarLibroporIdEjemplar(IdEjemplar) == true){
+                this.libros[i].cambiarPrestado(IdEjemplar);
+            }
+        }
+    }
+    
+    public void cambiarEstadoPerdido(int IdEjemplar){
+        for (int i = 0; i <this.libros.length; i++) {
+            if (this.libros[i] != null && this.libros[i].buscarLibroporIdEjemplar(IdEjemplar) == true){
+                this.libros[i].cambiarPerdido(IdEjemplar);
+            }
+        }
+    }
     // Estos métodos se replican para los demás arreglos
 }
