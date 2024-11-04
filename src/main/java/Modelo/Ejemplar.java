@@ -1,3 +1,5 @@
+package Modelo;
+
 public class Ejemplar {
     private int ID_Ejemplar;
     private String estado; 

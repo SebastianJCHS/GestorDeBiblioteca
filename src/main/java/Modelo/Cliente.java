@@ -1,3 +1,5 @@
+package Modelo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,3 +31,4 @@ public class Cliente extends Persona {
     }
      
 }
+

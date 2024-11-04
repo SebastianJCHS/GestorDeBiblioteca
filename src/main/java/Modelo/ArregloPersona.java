@@ -1,3 +1,5 @@
+package Modelo;
+
 public class ArregloPersona {
     private int indice;
     private Persona[] personas;

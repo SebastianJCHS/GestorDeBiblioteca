@@ -1,3 +1,4 @@
+package Modelo;
 
 public class ArregloCarnet {
     private Carnet[] carnet;
@@ -40,9 +41,12 @@ public class ArregloCarnet {
         boolean result = false;
         for (int i = 0; i < this.carnet.length; i++) {
             if(this.carnet[i] != null && this.carnet[i].getId_carnet() == id){
-                this.carnet[i].isActivo();
-                result = true;
-                return result;
+                if(!this.carnet[i].isActivo()){
+                    this.carnet[i].setEstado("Activo");
+                    result = true;
+                    return result;
+                }
+                
             }
         }
         return result;
@@ -52,9 +56,11 @@ public class ArregloCarnet {
         boolean result = false;
         for (int i = 0; i < this.carnet.length; i++) {
             if(this.carnet[i] != null && this.carnet[i].getId_carnet() == id){
-                this.carnet[i].isinactivo();
-                result = true;
-                return result;
+                if(!this.carnet[i].isinactivo()){
+                    result = true;
+                    return result;
+                }
+               
             }
         }
         return result;
@@ -64,9 +70,11 @@ public class ArregloCarnet {
         boolean result = false;
         for (int i = 0; i < this.carnet.length; i++) {
             if(this.carnet[i] != null && this.carnet[i].getId_carnet() == id){
-                this.carnet[i].isbloqueado();
-                result = true;
-                return result;
+                if(!this.carnet[i].isbloqueado()){
+                    result = true;
+                    return result;
+                }
+                
             }
         }
         return result;

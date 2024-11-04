@@ -1,3 +1,5 @@
+package Modelo;
+
 public class ArregloMulta {
     private Multa[] multa;
     private int indice;

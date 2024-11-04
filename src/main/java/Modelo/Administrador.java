@@ -1,5 +1,4 @@
-
-import java.awt.datatransfer.FlavorListener;
+package Modelo;
 
 public class Administrador extends Persona{
     private String ID_admin;

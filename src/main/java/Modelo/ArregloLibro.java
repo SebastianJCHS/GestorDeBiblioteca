@@ -1,3 +1,5 @@
+package Modelo;
+
 public class ArregloLibro {
     private int indice;
     private Libro[] libros;

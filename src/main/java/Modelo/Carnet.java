@@ -1,3 +1,5 @@
+package Modelo;
+
 public class Carnet {
     private int Id_carnet;
     private String estado; //Para el estado seran 3, activo, inactivo, bloqueado;

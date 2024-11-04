@@ -1,3 +1,5 @@
+package Modelo;
+
 public class Libro {
     private String nombre;
     private String autor;
@@ -89,6 +91,7 @@ public class Libro {
         for(int i = 0; i<this.ejemplares.length; i++){
             if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
                 result = true;
+                return result;
             }
         }
         return result;
@@ -98,7 +101,11 @@ public class Libro {
         boolean result = false;
         for(int i = 0; i<this.ejemplares.length; i++){
             if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
-                this.ejemplares[i].isDisponible();
+                if(!this.ejemplares[i].isDisponible()){
+                    this.ejemplares[i].setEstado("Disponible");
+                    result = true;
+                    return result;
+                }
             }
         }
         return result;
@@ -107,7 +114,11 @@ public class Libro {
         boolean result = false;
         for(int i = 0; i<this.ejemplares.length; i++){
             if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
-                this.ejemplares[i].isPrestado();
+                if(!this.ejemplares[i].isPrestado()){
+                    this.ejemplares[i].setEstado("Prestado");
+                    result = true;
+                    return result;
+                }
             }
         }
         return result;
@@ -116,7 +127,11 @@ public class Libro {
         boolean result = false;
         for(int i = 0; i<this.ejemplares.length; i++){
             if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
-                this.ejemplares[i].isPerdido();
+                if(!this.ejemplares[i].isPerdido()){
+                    this.ejemplares[i].setEstado("Perdido");
+                    result = true;
+                    return result;
+                }
             }
         }
         return result;
