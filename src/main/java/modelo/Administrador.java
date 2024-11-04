@@ -1,3 +1,5 @@
+package modelo;
+
 
 import java.awt.datatransfer.FlavorListener;
 

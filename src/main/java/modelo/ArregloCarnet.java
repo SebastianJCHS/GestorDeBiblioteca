@@ -1,3 +1,5 @@
+package modelo;
+
 public class ArregloCarnet {
     private Carnet[] carnet;
     private int indice;

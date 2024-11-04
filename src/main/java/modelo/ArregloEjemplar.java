@@ -1,3 +1,5 @@
+package modelo;
+
 public class ArregloEjemplar {
     private int indice;
     private Ejemplar[] ejemplares;

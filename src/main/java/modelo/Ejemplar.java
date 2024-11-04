@@ -1,3 +1,5 @@
+package modelo;
+
 public class Ejemplar {
     private String ID_Ejemplar;
     private String estado; 

@@ -1,3 +1,8 @@
+package modelo;
+
+
+import modelo.ArregloEjemplar;
+
 public class Libro {
     private String nombre;
     private String autor;

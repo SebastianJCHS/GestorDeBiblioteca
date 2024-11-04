@@ -1,3 +1,5 @@
+package modelo;
+
 public abstract class Persona {
     private String nombres;
     private String apellidos;
@@ -50,8 +52,6 @@ public abstract class Persona {
         this.DNI = DNI;
     }
     
-    
-
     public String getNombres() {
         return nombres;
     }

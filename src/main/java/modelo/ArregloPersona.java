@@ -1,6 +1,8 @@
+package modelo;
+
 public class ArregloPersona {
     private int indice;
-    private Persona[] personas;
+    private final Persona[] personas;
     
     public ArregloPersona(int multitud){
         this.personas = new Persona[multitud];
