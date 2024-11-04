@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class Ventana9 extends javax.swing.JFrame {
+public class menuCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana9
      */
-    public Ventana9() {
+    public menuCliente() {
         initComponents();
     }
 
@@ -27,25 +27,26 @@ public class Ventana9 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        PrestamoLibro = new javax.swing.JButton();
         PagarMulta = new javax.swing.JButton();
+        PrestamoLibro = new javax.swing.JButton();
         btnBuscarCarnet = new javax.swing.JButton();
+        btnVolverSeleccionUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("¿Que desea Hacer?");
 
-        PrestamoLibro.setText("Prestamos");
-        PrestamoLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PrestamoLibroActionPerformed(evt);
-            }
-        });
-
         PagarMulta.setText("Pagar multa");
         PagarMulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PagarMultaActionPerformed(evt);
+            }
+        });
+
+        PrestamoLibro.setText("Prestamos");
+        PrestamoLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrestamoLibroActionPerformed(evt);
             }
         });
 
@@ -56,54 +57,79 @@ public class Ventana9 extends javax.swing.JFrame {
             }
         });
 
+        btnVolverSeleccionUsuario.setText("Volver");
+        btnVolverSeleccionUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverSeleccionUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(150, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(148, 148, 148))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(PagarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(PrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btnBuscarCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(148, 148, 148))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(PagarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(123, 123, 123))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVolverSeleccionUsuario)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(btnBuscarCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(PagarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btnVolverSeleccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void PrestamoLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrestamoLibroActionPerformed
-        // TODO add your handling code here:
+        prestamo p1 = new prestamo();
+        p1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_PrestamoLibroActionPerformed
 
     private void PagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagarMultaActionPerformed
-        // TODO add your handling code here:
+        pagarMulta p1 = new pagarMulta();
+        p1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_PagarMultaActionPerformed
 
     private void btnBuscarCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarnetActionPerformed
-        // TODO add your handling code here:
+        buscarCarnet p1 = new buscarCarnet();
+        p1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnBuscarCarnetActionPerformed
+
+    private void btnVolverSeleccionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverSeleccionUsuarioActionPerformed
+        seleccionUsuario p1 = new seleccionUsuario();
+        p1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverSeleccionUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,20 +148,21 @@ public class Ventana9 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana9.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana9.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana9.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana9.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(menuCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana9().setVisible(true);
+                new menuCliente().setVisible(true);
             }
         });
     }
@@ -144,6 +171,7 @@ public class Ventana9 extends javax.swing.JFrame {
     public javax.swing.JButton PagarMulta;
     public javax.swing.JButton PrestamoLibro;
     public javax.swing.JButton btnBuscarCarnet;
+    private javax.swing.JButton btnVolverSeleccionUsuario;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

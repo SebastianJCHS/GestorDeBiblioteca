@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class Ventana3 extends javax.swing.JFrame {
+public class inSesionCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana3
      */
-    public Ventana3() {
+    public inSesionCliente() {
         initComponents();
     }
 
@@ -32,6 +32,7 @@ public class Ventana3 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         IdInicioSesionCliente = new javax.swing.JTextField();
         btnInicioCliente = new javax.swing.JButton();
+        btnVolverSeleccionUsuario = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -56,6 +57,13 @@ public class Ventana3 extends javax.swing.JFrame {
             }
         });
 
+        btnVolverSeleccionUsuario.setText("Volver");
+        btnVolverSeleccionUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverSeleccionUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +84,10 @@ public class Ventana3 extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(107, 107, 107))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btnVolverSeleccionUsuario)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +100,9 @@ public class Ventana3 extends javax.swing.JFrame {
                     .addComponent(IdInicioSesionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnInicioCliente)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(btnVolverSeleccionUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -103,8 +117,16 @@ public class Ventana3 extends javax.swing.JFrame {
     }//GEN-LAST:event_IdInicioSesionClienteActionPerformed
 
     private void btnInicioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioClienteActionPerformed
-        // TODO add your handling code here:
+        menuCliente p1 = new menuCliente();
+        p1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnInicioClienteActionPerformed
+
+    private void btnVolverSeleccionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverSeleccionUsuarioActionPerformed
+        seleccionUsuario p1 = new seleccionUsuario();
+        p1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverSeleccionUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,20 +145,21 @@ public class Ventana3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inSesionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inSesionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inSesionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inSesionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana3().setVisible(true);
+                new inSesionCliente().setVisible(true);
             }
         });
     }
@@ -144,6 +167,7 @@ public class Ventana3 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField IdInicioSesionCliente;
     public javax.swing.JButton btnInicioCliente;
+    private javax.swing.JButton btnVolverSeleccionUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

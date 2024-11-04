@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class Ventana2 extends javax.swing.JFrame {
+public class adminRegistro extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana2
      */
-    public Ventana2() {
+    public adminRegistro() {
         initComponents();
     }
 
@@ -43,10 +43,7 @@ public class Ventana2 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         EdadAdmin = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        IdInicioSesionAdmin = new javax.swing.JTextField();
-        btnInicioAdmin = new javax.swing.JButton();
+        btnVolverInSesionAdmin = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -89,20 +86,10 @@ public class Ventana2 extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Inicio de Sesion");
-
-        jLabel12.setText("ID: ");
-
-        IdInicioSesionAdmin.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverInSesionAdmin.setText("Volver");
+        btnVolverInSesionAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdInicioSesionAdminActionPerformed(evt);
-            }
-        });
-
-        btnInicioAdmin.setText("Inicio sesion");
-        btnInicioAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioAdminActionPerformed(evt);
+                btnVolverInSesionAdminActionPerformed(evt);
             }
         });
 
@@ -111,7 +98,7 @@ public class Ventana2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -122,8 +109,7 @@ public class Ventana2 extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel3)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ApellidoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
@@ -137,27 +123,18 @@ public class Ventana2 extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DniAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(IdInicioSesionAdmin)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(106, 106, 106))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnInicioAdmin)
-                                        .addGap(94, 94, 94)))))))
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(131, 131, 131))
+                                .addComponent(DniAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel1)
+                        .addGap(82, 82, 82))
+                    .addComponent(btnVolverInSesionAdmin))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(69, 69, 69)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,15 +160,9 @@ public class Ventana2 extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistroAdmin)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdInicioSesionAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnInicioAdmin)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(btnVolverInSesionAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -209,13 +180,12 @@ public class Ventana2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EdadAdminActionPerformed
 
-    private void IdInicioSesionAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdInicioSesionAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdInicioSesionAdminActionPerformed
+    private void btnVolverInSesionAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverInSesionAdminActionPerformed
+        inSesionAdmin ventanaPrincipal = new inSesionAdmin();
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
 
-    private void btnInicioAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnInicioAdminActionPerformed
+    }//GEN-LAST:event_btnVolverInSesionAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,20 +204,21 @@ public class Ventana2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana2().setVisible(true);
+                new adminRegistro().setVisible(true);
             }
         });
     }
@@ -257,16 +228,13 @@ public class Ventana2 extends javax.swing.JFrame {
     public javax.swing.JTextField CorreoAdmin;
     public javax.swing.JTextField DniAdmin;
     public javax.swing.JTextField EdadAdmin;
-    public javax.swing.JTextField IdInicioSesionAdmin;
     public javax.swing.JTextField NombreAdmin;
     public javax.swing.JTextField TelefonoAdmin;
-    public javax.swing.JButton btnInicioAdmin;
     public javax.swing.JButton btnRegistroAdmin;
+    private javax.swing.JButton btnVolverInSesionAdmin;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class Ventana10 extends javax.swing.JFrame {
+public class prestamo extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana10
      */
-    public Ventana10() {
+    public prestamo() {
         initComponents();
     }
 
@@ -33,6 +33,7 @@ public class Ventana10 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         NombreLibroPrestamo = new javax.swing.JTextField();
         btnPrestamoLibro = new javax.swing.JButton();
+        btnVolverMenuCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,13 @@ public class Ventana10 extends javax.swing.JFrame {
             }
         });
 
+        btnVolverMenuCliente.setText("Volver");
+        btnVolverMenuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverMenuClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,22 +86,24 @@ public class Ventana10 extends javax.swing.JFrame {
                         .addGap(167, 167, 167)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(EjemplarLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NombreLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnConsultarLibro)
-                                .addGap(135, 135, 135))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(139, 139, 139)
-                        .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVolverMenuCliente)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(EjemplarLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(NombreLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnConsultarLibro)
+                                    .addGap(135, 135, 135))))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +123,9 @@ public class Ventana10 extends javax.swing.JFrame {
                 .addComponent(btnConsultarLibro)
                 .addGap(28, 28, 28)
                 .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(btnVolverMenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -135,6 +147,12 @@ public class Ventana10 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrestamoLibroActionPerformed
 
+    private void btnVolverMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuClienteActionPerformed
+        menuCliente ventanaPrincipal = new menuCliente();
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMenuClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -152,20 +170,21 @@ public class Ventana10 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana10.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana10.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana10.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana10.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(prestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana10().setVisible(true);
+                new prestamo().setVisible(true);
             }
         });
     }
@@ -175,6 +194,7 @@ public class Ventana10 extends javax.swing.JFrame {
     public javax.swing.JTextField NombreLibroPrestamo;
     public javax.swing.JButton btnConsultarLibro;
     public javax.swing.JButton btnPrestamoLibro;
+    private javax.swing.JButton btnVolverMenuCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

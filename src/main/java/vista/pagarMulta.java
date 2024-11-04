@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class Ventana11 extends javax.swing.JFrame {
+public class pagarMulta extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana11
      */
-    public Ventana11() {
+    public pagarMulta() {
         initComponents();
     }
 
@@ -30,6 +30,7 @@ public class Ventana11 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         PagarMultaIdCarnet = new javax.swing.JTextField();
         btnPagarMulta = new javax.swing.JButton();
+        btnVolverMenuCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +45,13 @@ public class Ventana11 extends javax.swing.JFrame {
             }
         });
 
+        btnVolverMenuCliente.setText("Volver");
+        btnVolverMenuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverMenuClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -54,13 +62,16 @@ public class Ventana11 extends javax.swing.JFrame {
                         .addGap(164, 164, 164)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PagarMultaIdCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addComponent(btnPagarMulta)))
+                        .addComponent(btnPagarMulta))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVolverMenuCliente)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PagarMultaIdCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,7 +85,9 @@ public class Ventana11 extends javax.swing.JFrame {
                     .addComponent(PagarMultaIdCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPagarMulta)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addComponent(btnVolverMenuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -83,6 +96,12 @@ public class Ventana11 extends javax.swing.JFrame {
     private void btnPagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarMultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPagarMultaActionPerformed
+
+    private void btnVolverMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuClienteActionPerformed
+        menuCliente ventanaPrincipal = new menuCliente();
+        ventanaPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMenuClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,20 +120,21 @@ public class Ventana11 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(pagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana11().setVisible(true);
+                new pagarMulta().setVisible(true);
             }
         });
     }
@@ -122,6 +142,7 @@ public class Ventana11 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField PagarMultaIdCarnet;
     public javax.swing.JButton btnPagarMulta;
+    private javax.swing.JButton btnVolverMenuCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
