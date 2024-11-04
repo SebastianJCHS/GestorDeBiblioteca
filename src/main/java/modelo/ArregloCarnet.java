@@ -16,7 +16,7 @@ public class ArregloCarnet {
         }
         return false;
     }
-    
+
     public boolean Eliminarcarnet(int indice){
         if(indice >= 0 && indice < this.carnet.length && this.carnet[indice] != null){
            this.carnet[indice] = null;
