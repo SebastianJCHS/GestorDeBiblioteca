@@ -4,22 +4,23 @@ public class Libro {
     private String editorial;
     private String genero;
     private String fechaPublicacion;
-    private ArregloEjemplar ejemplares;
+    private Ejemplar[] ejemplares;
+    private int nroejemplares;
     
-    Libro(String nombre, String autor, String editorial, String genero, String fechaPublicacion, int capacidad){
+    Libro(String nombre, String autor, String editorial, String genero, String fechaPublicacion, int nroejemplares){
         this.nombre = nombre;
         this.autor = autor;
         this.editorial = editorial;
         this.genero = genero;
         this.fechaPublicacion = fechaPublicacion;
-        this.ejemplares = new ArregloEjemplar(capacidad);
+        this.nroejemplares = nroejemplares;
+        this.ejemplares = new Ejemplar[nroejemplares];
     }
 
     public Libro() {
     }
     
     
-
     public String getNombre() {
         return nombre;
     }
@@ -59,14 +60,65 @@ public class Libro {
     public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
+    
 
-    public ArregloEjemplar getEjemplares() {
+    public int getNroejemplares() {
+        return nroejemplares;
+    }
+
+    public void setNroejemplares(int nroejemplares) {
+        this.nroejemplares = nroejemplares;
+    }
+    
+    public void AsignarEjemplar(Ejemplar ejemplar){
+        for(int i = 0; i<this.ejemplares.length; i++){
+            this.ejemplares[i] = ejemplar;
+        }
+    }
+
+    public Ejemplar[] getEjemplares() {
         return ejemplares;
     }
 
-    public void setEjemplares(ArregloEjemplar ejemplares) {
+    public void setEjemplares(Ejemplar[] ejemplares) {
         this.ejemplares = ejemplares;
     }
     
+    public boolean buscarLibroporIdEjemplar(int IdEjemplar){
+        boolean result = false;
+        for(int i = 0; i<this.ejemplares.length; i++){
+            if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
+                result = true;
+            }
+        }
+        return result;
+    }
     
+    public boolean cambiarDisponible(int IdEjemplar){
+        boolean result = false;
+        for(int i = 0; i<this.ejemplares.length; i++){
+            if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
+                this.ejemplares[i].isDisponible();
+            }
+        }
+        return result;
+    }
+    public boolean cambiarPrestado(int IdEjemplar){
+        boolean result = false;
+        for(int i = 0; i<this.ejemplares.length; i++){
+            if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
+                this.ejemplares[i].isPrestado();
+            }
+        }
+        return result;
+    }
+    public boolean cambiarPerdido(int IdEjemplar){
+        boolean result = false;
+        for(int i = 0; i<this.ejemplares.length; i++){
+            if(this.ejemplares[i].getID_Ejemplar() == IdEjemplar){
+                this.ejemplares[i].isPerdido();
+            }
+        }
+        return result;
+    }
 }

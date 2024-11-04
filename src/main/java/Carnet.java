@@ -1,8 +1,8 @@
 public class Carnet {
-    private String Id_carnet;
+    private int Id_carnet;
     private String estado; //Para el estado seran 3, activo, inactivo, bloqueado;
 
-    public Carnet(String Id_carnet, String estado) {
+    public Carnet(int Id_carnet, String estado) {
         this.Id_carnet = Id_carnet;
         this.estado = estado;
     }
@@ -17,11 +17,11 @@ public class Carnet {
         return estado.equals("inactivo");
     }
 
-    public String getId_carnet() {
+    public int getId_carnet() {
         return Id_carnet;
     }
 
-    public void setId_carnet(String Id_carnet) {
+    public void setId_carnet(int Id_carnet) {
         this.Id_carnet = Id_carnet;
     }
 
@@ -32,6 +32,5 @@ public class Carnet {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
     
 }
