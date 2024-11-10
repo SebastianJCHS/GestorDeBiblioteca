@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.Random;
 public class Administrador extends Persona{
     private String ID_admin;
     
@@ -7,7 +8,13 @@ public class Administrador extends Persona{
         super(nombres, apellidos, edad, correoElectronico, telefono, DNI, rol);
         this.ID_admin = ID_admin;
     }
-
+    
+    public void makeid(){
+        String var1 = getNombres().trim().toLowerCase().substring(0,3);
+        String var2 = getApellidos().trim().toLowerCase().substring(0, 3);
+        Random var3 = new Random();
+        setID_admin(var1 + var2 + (var3.nextInt(9999)+1)); 
+    }
     public String getID_admin() {
         return ID_admin;
     }
