@@ -11,18 +11,21 @@ import javax.swing.JOptionPane;
 import vista.LoginAdminCliente;
 import vista.VentanaRegistroAdmin;
 import vista.VentanaRegistroLibros;
+import Modelo.ArregloPersona;
 
 public class ControladorRegistroAdmin {
     private Administrador administrador;
     private VentanaRegistroAdmin vista1;
     private VentanaRegistroLibros vista2;
     private LoginAdminCliente vista3;
+    private ArregloPersona persona;
 
-    public ControladorRegistroAdmin(Administrador administrador, VentanaRegistroAdmin vista1, VentanaRegistroLibros vista2, LoginAdminCliente vista3) {
+    public ControladorRegistroAdmin(Administrador administrador, VentanaRegistroAdmin vista1, VentanaRegistroLibros vista2, LoginAdminCliente vista3, ArregloPersona persona) {
         this.administrador = administrador;
         this.vista1 = vista1;
         this.vista2 = vista2;
         this.vista3 = vista3;
+        this.persona = persona;
         this.vista1.btnRgistroAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,6 +44,7 @@ public class ControladorRegistroAdmin {
                        administrador.setEdad(Integer.parseInt(Edad));
                        administrador.setRol("Administrador");
                        administrador.makeid();
+                       persona.agregarPersona(administrador);
                        JOptionPane.showMessageDialog(vista1, "Registro exitoso, su codigo de ingreso es " + administrador.getID_admin());
                        vista1.setVisible(false);
                        vista2.setLocationRelativeTo(null);
