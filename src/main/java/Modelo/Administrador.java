@@ -15,6 +15,8 @@ public class Administrador extends Persona{
         Random var3 = new Random();
         setID_admin(var1 + var2 + (var3.nextInt(9999)+1)); 
     }
+    
+    
     public String getID_admin() {
         return ID_admin;
     }

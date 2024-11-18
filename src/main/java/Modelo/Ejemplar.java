@@ -25,15 +25,11 @@ public class Ejemplar {
         this.estado = estado;
     }
 
-    public boolean isDisponible(){
-        return estado.equals("Disponible");
+    @Override
+    public String toString() {
+        return "Ejemplar{" + "ID_Ejemplar=" + ID_Ejemplar + ", estado=" + estado + '}';
     }
-    public boolean isPrestado(){
-        return estado.equals("Prestado");
-    }
+
     
-    public boolean isPerdido(){
-        return estado.equals("Perdido");
-    }
     
 }

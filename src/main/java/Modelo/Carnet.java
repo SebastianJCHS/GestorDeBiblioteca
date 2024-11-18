@@ -1,7 +1,8 @@
 package Modelo;
 
 public class Carnet {
-    private int Id_carnet;
+     private int Id_carnet;
+    private Multa multa;
     private String estado; //Para el estado seran 3, activo, inactivo, bloqueado;
 
     public Carnet(int Id_carnet, String estado) {
@@ -33,6 +34,11 @@ public class Carnet {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Carnet{" + "Id_carnet=" + Id_carnet + ", estado=" + estado + '}';
     }
     
 }

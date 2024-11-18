@@ -27,10 +27,8 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        VerificarLibro = new javax.swing.JButton();
-        EjemplarLibroVerificar1 = new javax.swing.JTextField();
+        btnVerificarLibro = new javax.swing.JButton();
         NombreLibroVerificar = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnVolverventanalibro = new javax.swing.JButton();
@@ -40,20 +38,13 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        VerificarLibro.setBackground(new java.awt.Color(0, 102, 102));
-        VerificarLibro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        VerificarLibro.setForeground(new java.awt.Color(255, 255, 255));
-        VerificarLibro.setText("Verificar");
-        VerificarLibro.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificarLibro.setBackground(new java.awt.Color(0, 102, 102));
+        btnVerificarLibro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnVerificarLibro.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerificarLibro.setText("Verificar");
+        btnVerificarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VerificarLibroActionPerformed(evt);
-            }
-        });
-
-        EjemplarLibroVerificar1.setBackground(new java.awt.Color(255, 255, 255));
-        EjemplarLibroVerificar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EjemplarLibroVerificar1ActionPerformed(evt);
+                btnVerificarLibroActionPerformed(evt);
             }
         });
 
@@ -63,10 +54,6 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
                 NombreLibroVerificarActionPerformed(evt);
             }
         });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Ejemplar del libro:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -91,49 +78,39 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(NombreLibroVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(VerificarLibro)
-                                            .addComponent(EjemplarLibroVerificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(136, 136, 136))))
+                            .addComponent(btnVolverventanalibro)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(NombreLibroVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVolverventanalibro)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel1)))
+                .addGap(0, 9, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(btnVerificarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(btnVolverventanalibro)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreLibroVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EjemplarLibroVerificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(VerificarLibro)
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(NombreLibroVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(btnVerificarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 280));
@@ -145,13 +122,9 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreLibroVerificarActionPerformed
 
-    private void EjemplarLibroVerificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EjemplarLibroVerificar1ActionPerformed
+    private void btnVerificarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarLibroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EjemplarLibroVerificar1ActionPerformed
-
-    private void VerificarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarLibroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VerificarLibroActionPerformed
+    }//GEN-LAST:event_btnVerificarLibroActionPerformed
 
     private void btnVolverventanalibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverventanalibroActionPerformed
         // TODO add your handling code here:
@@ -194,13 +167,11 @@ public class VentanaVerificarLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField EjemplarLibroVerificar1;
     public javax.swing.JTextField NombreLibroVerificar;
-    public javax.swing.JButton VerificarLibro;
+    public javax.swing.JButton btnVerificarLibro;
     public javax.swing.JButton btnVolverventanalibro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

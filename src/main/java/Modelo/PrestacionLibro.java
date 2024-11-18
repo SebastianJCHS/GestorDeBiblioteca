@@ -6,17 +6,16 @@ import java.time.format.DateTimeFormatter;
 public class PrestacionLibro {
     private String fechaPrestamo;
     private String fechaDevolucion;
-    private Cliente cliente; 
+    private Cliente cliente;
     private Libro libro;
     private Multa multa;
-    
 
-    public PrestacionLibro(String fechaPrestamo, String fechaDevolucion, Cliente cliente, Libro libro) {
+    public PrestacionLibro(String fechaPrestamo, String fechaDevolucion,Libro libro, Cliente cliente) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+        this.libro=libro;
         this.cliente = cliente;
-        this.libro = libro;
-        this.multa = null; 
+        this.multa = null;
     }
 
     public Cliente getCliente() {
@@ -27,7 +26,7 @@ public class PrestacionLibro {
         try {
             LocalDate fechaDevol = LocalDate.parse(fechaDevolucion, DateTimeFormatter.ISO_DATE);
             LocalDate fechaActual = LocalDate.now();
-            return fechaActual.isAfter(fechaDevol); 
+            return fechaActual.isAfter(fechaDevol);
         } catch (Exception e) {
             return false;
         }
@@ -36,7 +35,7 @@ public class PrestacionLibro {
     public void generarMulta() {
         if (estaPendiente() && multa == null) {
             float montoMulta = calcularMontoMulta();
-            this.multa = new Multa(montoMulta, cliente); 
+            this.multa = new Multa(montoMulta, cliente);
         }
     }
 
@@ -44,7 +43,22 @@ public class PrestacionLibro {
         LocalDate fechaDevol = LocalDate.parse(fechaDevolucion, DateTimeFormatter.ISO_DATE);
         LocalDate fechaActual = LocalDate.now();
         long diasRetraso = fechaActual.toEpochDay() - fechaDevol.toEpochDay();
-        return diasRetraso * 10.0f; 
+        return diasRetraso * 10.0f;
+    }
+
+    public boolean solicitarPrestamo() {
+            boolean result=false;
+            if (libro.hayEjemplaresDisponibles()) {
+                // Cambiar el estado de un ejemplar a "Prestado"
+                libro.cambiarEstadoEjemplarDisponibleAPrestado();
+                result= true; // Préstamo exitoso
+            } 
+            return result;
+    }
+    
+    public void mostrarPrestacion (){
+        System.out.println(cliente);
+        libro.mostrarLibroyEjemplares();
     }
 
     public Multa getMulta() {

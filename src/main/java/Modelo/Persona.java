@@ -9,14 +9,16 @@ public abstract class Persona {
     private String DNI;
     private String rol;
 
-    public Persona(String nombres, String apellidos, int edad, String correoElectronico, String telefono, String DNI, String rol) {
+
+    public Persona(String nombres, String apellidos, int edad, String correoElectronico, String telefono, String DNI,String rol) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.edad = edad;
         this.correoElectronico = correoElectronico;
         this.telefono = telefono;
         this.DNI = DNI;
-        this.rol = rol;
+        this.rol=rol;
+
     }
 
     public String getRol() {
@@ -26,8 +28,6 @@ public abstract class Persona {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    
-    
     public String getCorreoElectronico() {
         return correoElectronico;
     }

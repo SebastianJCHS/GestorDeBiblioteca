@@ -1,11 +1,11 @@
-package Modelo;
+ package Modelo;
 
 public class ArregloPrestamo {
     private PrestacionLibro[] Prestamo;
     private int indice;
 
-    public ArregloPrestamo(int tamaño) {
-        this.Prestamo = new PrestacionLibro[tamaño];
+    public ArregloPrestamo() {
+        this.Prestamo = new PrestacionLibro[5];
         this.indice = 0;
     }
     
@@ -38,5 +38,14 @@ public class ArregloPrestamo {
         }
         return result;
     } 
+
+    public void mostrarPrestamos(){
+        for (PrestacionLibro prestacionLibro : Prestamo) {
+            if (prestacionLibro != null) {  // Verificar si el elemento no es null
+                System.out.println("");
+                prestacionLibro.mostrarPrestacion();
+            }
+        }
+    }
     
 }

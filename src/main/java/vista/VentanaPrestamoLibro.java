@@ -34,13 +34,14 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
         btnMenuCarnet = new javax.swing.JButton();
         btnMenuMulta = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        btnConsultarLibro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         NombreLibroPrestamo = new javax.swing.JTextField();
         btnPrestamoLibro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        EjemplarLibroPrestamo = new javax.swing.JTextField();
+        textFechaPrestamo = new javax.swing.JTextField();
+        textFechaDevolucion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,19 +109,9 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnConsultarLibro.setBackground(new java.awt.Color(0, 102, 102));
-        btnConsultarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnConsultarLibro.setForeground(new java.awt.Color(255, 255, 255));
-        btnConsultarLibro.setText("Consultar");
-        btnConsultarLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarLibroActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nombre del libro:");
+        jLabel2.setText("Fecha de devolucion");
 
         NombreLibroPrestamo.setBackground(new java.awt.Color(255, 255, 255));
         NombreLibroPrestamo.addActionListener(new java.awt.event.ActionListener() {
@@ -143,67 +134,76 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Prestamo");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Ejemplar del libro:");
-
-        EjemplarLibroPrestamo.setBackground(new java.awt.Color(255, 255, 255));
-        EjemplarLibroPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        textFechaPrestamo.setBackground(new java.awt.Color(255, 255, 255));
+        textFechaPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EjemplarLibroPrestamoActionPerformed(evt);
+                textFechaPrestamoActionPerformed(evt);
             }
         });
+
+        textFechaDevolucion.setBackground(new java.awt.Color(255, 255, 255));
+        textFechaDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFechaDevolucionActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Nombre del libro:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Fecha prestamos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NombreLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1)
-                        .addGap(137, 137, 137))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(btnConsultarLibro))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EjemplarLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textFechaDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(textFechaPrestamo)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel1)
-                .addGap(11, 11, 11)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(textFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFechaDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
                     .addComponent(NombreLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(EjemplarLibroPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnConsultarLibro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(btnPrestamoLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 420, 500));
@@ -231,10 +231,6 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenuMultaActionPerformed
 
-    private void btnConsultarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLibroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarLibroActionPerformed
-
     private void NombreLibroPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreLibroPrestamoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NombreLibroPrestamoActionPerformed
@@ -243,9 +239,13 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrestamoLibroActionPerformed
 
-    private void EjemplarLibroPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EjemplarLibroPrestamoActionPerformed
+    private void textFechaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFechaPrestamoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EjemplarLibroPrestamoActionPerformed
+    }//GEN-LAST:event_textFechaPrestamoActionPerformed
+
+    private void textFechaDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFechaDevolucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFechaDevolucionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,9 +284,7 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField EjemplarLibroPrestamo;
     public javax.swing.JTextField NombreLibroPrestamo;
-    public javax.swing.JButton btnConsultarLibro;
     public javax.swing.JButton btnMenuCarnet;
     public javax.swing.JButton btnMenuMulta;
     public javax.swing.JButton btnMenuRegistroAdmin;
@@ -295,9 +293,12 @@ public class VentanaPrestamoLibro extends javax.swing.JFrame {
     public javax.swing.JButton btnregresoInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    public javax.swing.JTextField textFechaDevolucion;
+    public javax.swing.JTextField textFechaPrestamo;
     // End of variables declaration//GEN-END:variables
 }
