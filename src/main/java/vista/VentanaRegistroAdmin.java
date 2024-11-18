@@ -68,16 +68,13 @@ public class VentanaRegistroAdmin extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Telefono:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Edad:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, 20));
 
-        EdadAdmin.setBackground(new java.awt.Color(255, 255, 255));
         EdadAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EdadAdminActionPerformed(evt);
@@ -87,17 +84,14 @@ public class VentanaRegistroAdmin extends javax.swing.JFrame {
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Inicio de Sesion");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("ID: ");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 407, -1, -1));
 
-        IdInicioSesionAdmin.setBackground(new java.awt.Color(255, 255, 255));
         IdInicioSesionAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdInicioSesionAdminActionPerformed(evt);
@@ -117,42 +111,30 @@ public class VentanaRegistroAdmin extends javax.swing.JFrame {
         jPanel2.add(btnRgistroAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombres:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        NombreAdmin.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(NombreAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 270, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellidos:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        ApellidoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(ApellidoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
-
-        DniAdmin.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(DniAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 110, -1));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Correo:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
-        CorreoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         CorreoAdmin.setForeground(new java.awt.Color(153, 153, 153));
         jPanel2.add(CorreoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 270, -1));
 
-        TelefonoAdmin.setBackground(new java.awt.Color(255, 255, 255));
         TelefonoAdmin.setForeground(new java.awt.Color(153, 153, 153));
         TelefonoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,12 +144,10 @@ public class VentanaRegistroAdmin extends javax.swing.JFrame {
         jPanel2.add(TelefonoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 270, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Registro de Administrador");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("O");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
 

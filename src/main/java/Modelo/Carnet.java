@@ -1,22 +1,24 @@
 package Modelo;
 
 public class Carnet {
-     private int Id_carnet;
+    private int Id_carnet;
     private Multa multa;
-    private String estado; //Para el estado seran 3, activo, inactivo, bloqueado;
+    private String estado; // Para el estado serán 3: activo, inactivo, bloqueado
 
     public Carnet(int Id_carnet, String estado) {
         this.Id_carnet = Id_carnet;
         this.estado = estado;
     }
-    
-    public boolean isActivo(){
+
+    public boolean isActivo() {
         return estado.equals("activo");
     }
-    public boolean isbloqueado(){
+
+    public boolean isbloqueado() {
         return estado.equals("bloqueado");
     }
-    public boolean isinactivo(){
+
+    public boolean isinactivo() {
         return estado.equals("inactivo");
     }
 
@@ -36,9 +38,16 @@ public class Carnet {
         this.estado = estado;
     }
 
+    public Multa getMulta() {
+        return multa;
+    }
+
+    public void setMulta(Multa multa) {
+        this.multa = multa;
+    }
+
     @Override
     public String toString() {
         return "Carnet{" + "Id_carnet=" + Id_carnet + ", estado=" + estado + '}';
     }
-    
 }

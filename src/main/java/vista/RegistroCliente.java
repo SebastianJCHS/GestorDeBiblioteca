@@ -29,9 +29,23 @@ public class RegistroCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        IdInicioSesionAdmin = new javax.swing.JTextField();
-        btnInicioAdmin1 = new javax.swing.JButton();
+        IdInicioSesionCliente = new javax.swing.JTextField();
+        btnInicioCliente = new javax.swing.JButton();
         btnVolverventanalogin = new javax.swing.JButton();
+        btnRgistroCliente = new javax.swing.JButton();
+        DniCliente = new javax.swing.JTextField();
+        EdadCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        TelefonoCliente = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        CorreoCliente = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ApellidoCliente = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        NombreCliente = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,34 +54,31 @@ public class RegistroCliente extends javax.swing.JFrame {
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Inicio de Sesion");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("ID Carnet: ");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
 
-        IdInicioSesionAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        IdInicioSesionAdmin.addActionListener(new java.awt.event.ActionListener() {
+        IdInicioSesionCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdInicioSesionAdminActionPerformed(evt);
+                IdInicioSesionClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(IdInicioSesionAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 250, -1));
+        jPanel2.add(IdInicioSesionCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 250, 30));
 
-        btnInicioAdmin1.setBackground(new java.awt.Color(0, 102, 102));
-        btnInicioAdmin1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnInicioAdmin1.setForeground(new java.awt.Color(255, 255, 255));
-        btnInicioAdmin1.setText("Inicio sesion");
-        btnInicioAdmin1.addActionListener(new java.awt.event.ActionListener() {
+        btnInicioCliente.setBackground(new java.awt.Color(0, 102, 102));
+        btnInicioCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnInicioCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnInicioCliente.setText("Inicio sesion");
+        btnInicioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioAdmin1ActionPerformed(evt);
+                btnInicioClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInicioAdmin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        jPanel2.add(btnInicioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
 
         btnVolverventanalogin.setBackground(new java.awt.Color(0, 102, 102));
         btnVolverventanalogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -80,31 +91,107 @@ public class RegistroCliente extends javax.swing.JFrame {
         });
         jPanel2.add(btnVolverventanalogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        btnRgistroCliente.setBackground(new java.awt.Color(0, 102, 102));
+        btnRgistroCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRgistroCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnRgistroCliente.setText("Registrar");
+        btnRgistroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRgistroClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnRgistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 100, -1));
+        jPanel2.add(DniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 110, -1));
+
+        EdadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EdadClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(EdadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, -1));
+
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("DNI:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Edad:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, 20));
+
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("Telefono:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+
+        TelefonoCliente.setForeground(new java.awt.Color(153, 153, 153));
+        TelefonoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TelefonoClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(TelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 270, -1));
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Correo:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
+        CorreoCliente.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel2.add(CorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 270, -1));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setText("Apellidos:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel2.add(ApellidoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 270, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Nombres:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPanel2.add(NombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 270, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Registro de Cliente");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdInicioSesionAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdInicioSesionAdminActionPerformed
+    private void IdInicioSesionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdInicioSesionClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IdInicioSesionAdminActionPerformed
+    }//GEN-LAST:event_IdInicioSesionClienteActionPerformed
 
-    private void btnInicioAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioAdmin1ActionPerformed
+    private void btnInicioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInicioAdmin1ActionPerformed
+    }//GEN-LAST:event_btnInicioClienteActionPerformed
 
     private void btnVolverventanaloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverventanaloginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverventanaloginActionPerformed
+
+    private void btnRgistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRgistroClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRgistroClienteActionPerformed
+
+    private void EdadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdadClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EdadClienteActionPerformed
+
+    private void TelefonoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelefonoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,11 +229,25 @@ public class RegistroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField IdInicioSesionAdmin;
-    public javax.swing.JButton btnInicioAdmin1;
+    public javax.swing.JTextField ApellidoCliente;
+    public javax.swing.JTextField CorreoCliente;
+    public javax.swing.JTextField DniCliente;
+    public javax.swing.JTextField EdadCliente;
+    public javax.swing.JTextField IdInicioSesionCliente;
+    public javax.swing.JTextField NombreCliente;
+    public javax.swing.JTextField TelefonoCliente;
+    public javax.swing.JButton btnInicioCliente;
+    public javax.swing.JButton btnRgistroCliente;
     public javax.swing.JButton btnVolverventanalogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
