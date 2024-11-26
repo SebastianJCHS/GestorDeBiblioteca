@@ -33,7 +33,7 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnAñadirLibro = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TablaLibros = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         btnVerificarLibroEjemplar = new javax.swing.JButton();
         btnRegreso = new javax.swing.JButton();
@@ -70,8 +70,8 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setBackground(new java.awt.Color(204, 204, 204));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaLibros.setBackground(new java.awt.Color(204, 204, 204));
+        TablaLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,7 +82,7 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(TablaLibros);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -199,6 +199,7 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable TablaLibros;
     public javax.swing.JButton btnActualizartabla;
     public javax.swing.JButton btnAñadirLibro;
     public javax.swing.JButton btnRegreso;
@@ -210,6 +211,5 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

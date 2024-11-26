@@ -6,6 +6,7 @@ public class Libro {
     private String editorial;
     private String genero;
     private String fechaPublicacion;
+    private int nrjemeplares;
     private Ejemplar[] ejemplares;
     
     public Libro(String nombre, String autor, String editorial, String genero, String fechaPublicacion, int numEjemplares){
@@ -14,6 +15,7 @@ public class Libro {
         this.editorial = editorial;
         this.genero = genero;
         this.fechaPublicacion = fechaPublicacion;
+        this.nrjemeplares = numEjemplares;
         this.ejemplares = new Ejemplar[numEjemplares];
         
         for (int i = 0; i < numEjemplares; i++) {
@@ -22,6 +24,14 @@ public class Libro {
     }
 
     public Libro() {
+    }
+
+    public int getNrjemeplares() {
+        return nrjemeplares;
+    }
+
+    public void setNrjemeplares(int nrjemeplares) {
+        this.nrjemeplares = nrjemeplares;
     }
     
     

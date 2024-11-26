@@ -1,20 +1,15 @@
 package Modelo;
 
+import java.io.Serializable;
 import java.util.Random;
-public class Administrador extends Persona{
+public class Administrador extends Persona implements Serializable{
     private String ID_admin;
     
-    public Administrador(String nombres, String apellidos, int edad, String correoElectronico, String telefono, String DNI, String rol) {
+    public Administrador(String ID_admin, String nombres, String apellidos, int edad, String correoElectronico, String telefono, String DNI, String rol) {
         super(nombres, apellidos, edad, correoElectronico, telefono, DNI, rol);
         this.ID_admin = ID_admin;
     }
     
-    public void makeid(){
-        String var1 = getNombres().trim().toLowerCase().substring(0,3);
-        String var2 = getApellidos().trim().toLowerCase().substring(0, 3);
-        Random var3 = new Random();
-        setID_admin(var1 + var2 + (var3.nextInt(9999)+1)); 
-    }
     
     
     public String getID_admin() {

@@ -29,10 +29,11 @@ public class RegistroMulta extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaMulta = new javax.swing.JTable();
         btnAgregarMulta = new javax.swing.JButton();
         btnregresoInicio = new javax.swing.JButton();
         btnAgregarMulta1 = new javax.swing.JButton();
+        btnActualizarTabla = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,9 +43,9 @@ public class RegistroMulta extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Multas de Usuarios");
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setForeground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaMulta.setBackground(new java.awt.Color(204, 204, 204));
+        TablaMulta.setForeground(new java.awt.Color(204, 204, 204));
+        TablaMulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,7 +56,7 @@ public class RegistroMulta extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaMulta);
 
         btnAgregarMulta.setBackground(new java.awt.Color(0, 102, 102));
         btnAgregarMulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -86,16 +87,20 @@ public class RegistroMulta extends javax.swing.JFrame {
             }
         });
 
+        btnActualizarTabla.setBackground(new java.awt.Color(0, 102, 102));
+        btnActualizarTabla.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnActualizarTabla.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarTabla.setText("Actualizar Tabla");
+        btnActualizarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarTablaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(btnAgregarMulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregarMulta1)
-                .addGap(111, 111, 111))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,6 +110,14 @@ public class RegistroMulta extends javax.swing.JFrame {
                         .addGap(120, 120, 120)
                         .addComponent(jLabel1)))
                 .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(btnAgregarMulta)
+                .addGap(58, 58, 58)
+                .addComponent(btnAgregarMulta1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizarTabla)
+                .addGap(57, 57, 57))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,12 +127,13 @@ public class RegistroMulta extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btnregresoInicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarMulta)
                     .addComponent(btnAgregarMulta1)
-                    .addComponent(btnAgregarMulta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnActualizarTabla))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,18 +164,23 @@ public class RegistroMulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarMulta1ActionPerformed
 
+    private void btnActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarTablaActionPerformed
+
     /**
      * @param args the command line arguments
      */
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable TablaMulta;
+    public javax.swing.JButton btnActualizarTabla;
     public javax.swing.JButton btnAgregarMulta;
     public javax.swing.JButton btnAgregarMulta1;
     public javax.swing.JButton btnregresoInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

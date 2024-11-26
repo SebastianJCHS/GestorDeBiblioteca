@@ -171,6 +171,7 @@ public class ControladorCliente {
                 Cliente cliente = (Cliente) personas.buscarPersonaPorIdCarnet(carnet.getId_carnet());
                 if (cliente != null) {
                     JOptionPane.showMessageDialog(ventana2, "Inicio de sesión exitoso.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    ventana2.setVisible(false);
                     ventana1.setLocationRelativeTo(null);
                     ventana1.setVisible(true);
                 } else {

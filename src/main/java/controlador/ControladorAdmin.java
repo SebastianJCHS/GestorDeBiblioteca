@@ -36,9 +36,6 @@ import Modelo.Persona;
 import Modelo.PrestacionLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class ControladorAdmin {
@@ -249,6 +246,13 @@ public class ControladorAdmin {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana13.btnActualizartabla.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                settableLibro();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
         this.ventana7.btnRegistrarLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -280,7 +284,8 @@ public class ControladorAdmin {
         this.ventana4.btnAgregarMulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                ventana6.setLocationRelativeTo(null);
+                ventana6.setVisible(true);
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -293,47 +298,74 @@ public class ControladorAdmin {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana4.btnActualizarTabla.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                settableMulta();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana6.btnVolverventanaMulta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana6.setVisible(false);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana6.bnañadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                añadirMulta();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
     }
     
-    public Object[][] getDatosClientesConCarnet() {
-        
-    Object[][] resultado = new Object[personas.getIndice()][7];
-
-    int fila = 0;
-    for (Persona persona : personas.mostrarPersonas()) {
-        if (persona instanceof Cliente cliente) {
-            // Datos del cliente
-            resultado[fila][0] = cliente.getNombres();
-            resultado[fila][1] = cliente.getApellidos();
-            resultado[fila][2] = cliente.getEdad();
-            resultado[fila][3] = cliente.getCorreoElectronico();
-            resultado[fila][4] = cliente.getDNI();
-            resultado[fila][5] = cliente.getRol();
-
-            Carnet carnet = cliente.getCarnet(); 
-            if (carnet != null) {
-                resultado[fila][6] = carnet.getId_carnet();
-                resultado[fila][7] = carnet.getEstado();
-            } else {
-                resultado[fila][6] = "Sin ID";
-                resultado[fila][7] = "Sin estado";
-            }
-            fila++;
-        }
-    }
-    return resultado;
-}
 
     public void settable(){
-        String[] cabeceras = carnets.getcabecera();
-        Object[][] datos = getDatosClientesConCarnet();
-        DefaultTableModel modelotabla = new DefaultTableModel(datos, cabeceras);
+        String[] cabeceras = personas.getcabecera();
+        DefaultTableModel modelotabla = new DefaultTableModel(personas.getDatos(), cabeceras);
         this.ventana5.TablaCarnet.setModel(modelotabla);
+    }
+    
+    public void settableLibro(){
+        String[] cabeceras = libros.getcabecera();
+        DefaultTableModel modelotabla = new DefaultTableModel(libros.getDatos(), cabeceras);
+        this.ventana13.TablaLibros.setModel(modelotabla);
+    }
+     
+    public void settableMulta(){
+        String[] cabeceras = multas.getcabecera();
+        DefaultTableModel modelotabla = new DefaultTableModel(multas.getDatos(), cabeceras);
+        this.ventana4.TablaMulta.setModel(modelotabla);
     }
     
     public void iniciar(){
         ventana1.setLocationRelativeTo(null);
         ventana1.setVisible(true);
+    }
+    
+    private void añadirMulta() {
+        try {
+            int idCarnet = Integer.parseInt(ventana6.IdCarnet.getText().trim());
+            Carnet carnet = carnets.BuscarCarnet(idCarnet);
+
+            if (carnet != null) {
+                Cliente cliente = (Cliente) personas.buscarPersonaPorIdCarnet(idCarnet);
+                if (cliente != null) {
+                    Multa nuevaMulta = new Multa(100.0f, cliente); // Puedes ajustar el monto de la multa según sea necesario
+                    multas.AgregarMulta(nuevaMulta);
+                    carnet.setMulta(nuevaMulta);
+                    JOptionPane.showMessageDialog(ventana6, "Multa añadida correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(ventana6, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(ventana6, "ID de carnet no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(ventana6, "Error: Verifique que el ID sea correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     public void registroAdmin(){
         String nombres = ventana2.NombreAdmin.getText().trim();
@@ -344,11 +376,11 @@ public class ControladorAdmin {
         String Edad = ventana2.EdadAdmin.getText().trim();
             if (!nombres.isEmpty() || !apellidos.isEmpty() || !DNI.isEmpty() || !Correo.isEmpty() || !Telefono.isEmpty() || !Edad.isEmpty()) {
                 int edad = Integer.parseInt(Edad);
-                Administrador administrador = new Administrador(nombres, apellidos, edad, Telefono, Telefono, DNI, DNI);
-                administrador.makeid();
+                Administrador administrador = new Administrador(DNI,nombres, apellidos, edad, Correo, Telefono, DNI, "sin_rol");
                 administrador.setRol("Administrador");
                 personas.agregarPersona(administrador);
                 JOptionPane.showMessageDialog(ventana2, "Registro exitoso, su codigo de ingreso es " + administrador.getID_admin());
+                personas.guardarAdminsEnArchivo("Administrador.txt");
                 ventana2.setVisible(false);
                 ventana15.setLocationRelativeTo(null);
                 ventana15.setVisible(true);
@@ -397,7 +429,7 @@ public class ControladorAdmin {
             Cliente nuevoCliente = new Cliente(nombres, apellidos,edad,correo,telefono,dni,"Cliente", nuevoCarnet);
             carnets.AgregarCarnet(nuevoCarnet);
             personas.agregarPersona(nuevoCliente);
-            guardarClientesEnArchivo("Clientes.txt");
+            personas.guardarClientesEnArchivo("Clientes.txt");
 
             JOptionPane.showMessageDialog(ventana12, "Carnet registrado correctamente para " + nombres + " " + apellidos, "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposCarnet();
@@ -540,30 +572,4 @@ public class ControladorAdmin {
         }
     }
     
-    public void guardarClientesEnArchivo(String rutaArchivo) {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
-        for (Persona persona : this.personas.mostrarPersonas()) {
-            if (persona instanceof Cliente cliente) {
-                // Guardar datos del cliente
-                writer.write(cliente.getNombres() + "," +
-                             cliente.getApellidos() + "," +
-                             cliente.getEdad() + "," +
-                             cliente.getCorreoElectronico() + "," +
-                             cliente.getDNI() + "," +
-                             cliente.getRol() + ",");
-
-                // Guardar datos del carnet asociado
-                Carnet carnet = cliente.getCarnet();
-                if (carnet != null) {
-                    writer.write(carnet.getId_carnet() + "," + carnet.getEstado());
-                } else {
-                    writer.write("Sin ID,Sin estado");
-                }
-                writer.newLine(); // Salto de línea para el siguiente cliente
-            }
-        }
-    } catch (IOException e) {
-        System.out.println("Error al guardar en el archivo: " + e.getMessage());
-    }
-}
 }

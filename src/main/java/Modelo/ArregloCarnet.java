@@ -1,7 +1,13 @@
 package Modelo;
 import Interfaces.Interface;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class ArregloCarnet implements Interface{
+public class ArregloCarnet implements Interface,Serializable{
     private Carnet[] carnet;
     private int indice, tamaño;
     private String[] cabeceras = {"ID", "ESTADO"};
@@ -114,4 +120,36 @@ public class ArregloCarnet implements Interface{
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public Object[][] getDatos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+   public void cargarCarnetsDesdeArchivo(String rutaArchivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length == 9) {
+                    String nombres = partes[0].trim();
+                    String apellidos = partes[1].trim();
+                    int edad = Integer.parseInt(partes[2].trim());
+                    String correoElectronico = partes[3].trim();
+                    String telefono = partes[4].trim();
+                    String dni = partes[5].trim();
+                    String rol = partes[6].trim();
+
+                    int idCarnet = Integer.parseInt(partes[7].trim());
+                    String estadoCarnet = partes[8].trim();
+
+                    Carnet carnet = new Carnet(idCarnet, estadoCarnet);
+                    AgregarCarnet(carnet);
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("Error al leer del archivo: " + e.getMessage());
+    } catch (NumberFormatException e) {
+        System.out.println("Error al convertir datos numéricos: " + e.getMessage());
+    }
+}
 }

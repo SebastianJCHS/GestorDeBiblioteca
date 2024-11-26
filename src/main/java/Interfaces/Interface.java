@@ -8,4 +8,5 @@ public interface Interface {
     public String[] getcabecera();
     public boolean islleno();
     public void aumentar();
+    public Object[][] getDatos();
 }
