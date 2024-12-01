@@ -18,8 +18,8 @@ public class ArregloMulta implements Interface {
     }
 
     public void AgregarMulta(Multa multa){
-        if(multa != null && this.multa[indice] == null){
-           this.multa[indice] = multa;
+        if(this.indice < this.multa.length){
+           this.multa[this.indice] = multa;
            indice++;
         }
     }
@@ -76,20 +76,23 @@ public class ArregloMulta implements Interface {
 
     int fila = 0;
     for (Multa multa: this.multa) {
-            resultado[fila][0] = multa.getMonto();
+        if(multa!=null){
+          resultado[fila][0] = multa.getMonto();
             resultado[fila][1] = multa.getFecha();
             resultado[fila][2] = multa.getCliente().getNombres();
             resultado[fila][3] = multa.getEstado();
-            fila++;
+            fila++;  
+        }
     }
     return resultado;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-        public void guardarMultasEnArchivo(String rutaArchivo) {
+    public void guardarMultasEnArchivo(String rutaArchivo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Multa multa : this.multa) {
-                writer.write(multa.getMonto() + "," +
+                if(multa!=null && multa.getCliente() != null && multa.getCliente().getCarnet() != null){
+                 writer.write(multa.getMonto() + "," +
                              multa.getFecha() + "," +
                              multa.getCliente().getNombres() + "," +
                              multa.getCliente().getApellidos() + "," +
@@ -101,27 +104,37 @@ public class ArregloMulta implements Interface {
                              multa.getCliente().getCarnet().getId_carnet() + "," +
                              multa.getCliente().getCarnet().getEstado() + "," +
                              multa.getEstado());
-                writer.newLine();
-        }
+                    writer.newLine();   
+                }
+            
+            }
     } catch (IOException e) {
         System.out.println("Error al guardar en el archivo: " + e.getMessage());
     }
 }
     //Esta funcion es para Cargar las multas al arreglo, lo completa el que le toca, es la misma logica que el de cliente y los demas
-    /*public void cargarMultasDesdeArchivo(String rutaArchivo) {
+    public void cargarMultasDesdeArchivo(String rutaArchivo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
                 if (partes.length == 12) {
-                    String nombre = partes[0].trim();
-                    String Autor = partes[1].trim();
-                    String Editorial = partes[2].trim();
-                    String Genero = partes[3].trim();
-                    String fechaPublicacion = partes[4].trim();
-                    int nroEjemplares = Integer.parseInt(partes[5].trim());
-                    Libro libro = new Libro(nombre, Autor, Editorial, Genero, fechaPublicacion, nroEjemplares);
-                    agregarLibro(libro);
+                    float monto = Float.parseFloat(partes[0].trim());
+                    String fecha = partes[1].trim();
+                    String Nombres = partes[2].trim();
+                    String Apellido = partes[3].trim();
+                    int edad = Integer.parseInt(partes[4].trim());
+                    String correo = partes[5].trim();
+                    String telefono = partes[6].trim();
+                    String DNI = partes[7].trim();
+                    String rol = partes[8].trim();
+                    int id = Integer.parseInt(partes[9].trim());
+                    String EstadoCarnet = partes[10].trim();
+                    String EstadoMulta = partes[11].trim();
+                    Carnet carnet = new Carnet(id, EstadoCarnet);
+                    Cliente cliente = new Cliente(Nombres, Apellido, edad, telefono, telefono, DNI, rol, carnet);
+                    Multa multa =new Multa(monto, cliente);
+                    AgregarMulta(multa);
             }
         }
     } catch (IOException e) {
@@ -129,7 +142,7 @@ public class ArregloMulta implements Interface {
     } catch (NumberFormatException e) {
         System.out.println("Error al convertir datos numéricos: " + e.getMessage());
     }
-}*/
+}
 }
 
 

@@ -1,0 +1,1 @@
+100.0,2024-11-28,Luis,Morales,20,ejemplo@cliente,12134,123456789,Cliente,123456789,activo,pendiente

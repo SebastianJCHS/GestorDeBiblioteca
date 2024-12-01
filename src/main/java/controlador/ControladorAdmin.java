@@ -281,6 +281,13 @@ public class ControladorAdmin {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana4.btnActualizarTabla.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                settableMulta();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
         this.ventana4.btnAgregarMulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -298,13 +305,7 @@ public class ControladorAdmin {
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-        this.ventana4.btnActualizarTabla.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                settableMulta();
-                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
+
         this.ventana6.btnVolverventanaMulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -356,6 +357,12 @@ public class ControladorAdmin {
                     Multa nuevaMulta = new Multa(100.0f, cliente); // Puedes ajustar el monto de la multa según sea necesario
                     multas.AgregarMulta(nuevaMulta);
                     carnet.setMulta(nuevaMulta);
+                    carnets.CambiarBloqueado(idCarnet);
+                    multas.guardarMultasEnArchivo("Multas.txt");
+                    personas.guardarClientesEnArchivo("Clientes.txt");
+                    
+                    settableMulta();
+                    settable();
                     JOptionPane.showMessageDialog(ventana6, "Multa añadida correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(ventana6, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -430,7 +437,7 @@ public class ControladorAdmin {
             carnets.AgregarCarnet(nuevoCarnet);
             personas.agregarPersona(nuevoCliente);
             personas.guardarClientesEnArchivo("Clientes.txt");
-
+            settable();
             JOptionPane.showMessageDialog(ventana12, "Carnet registrado correctamente para " + nombres + " " + apellidos, "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposCarnet();
         } catch (NumberFormatException ex) {
@@ -526,14 +533,15 @@ public class ControladorAdmin {
             String editorial = ventana7.EditorialLibro.getText().trim();
             String Publicacion = ventana7.FechaPublicacionLibro.getText().trim();
             String Genero = ventana7.GeneroLibro.getText().trim();
-            String Ejemplares = ventana7.NroEjemplares.getText().trim();
+            int Ejemplares = Integer.parseInt(ventana7.NroEjemplares.getText().trim());
             
-            if(Nombre.isEmpty() || autor.isEmpty() || editorial.isEmpty() || Publicacion.isEmpty() || Genero.isEmpty() || Ejemplares.isEmpty()){
+            if(Nombre.isEmpty() || autor.isEmpty() || editorial.isEmpty() || Publicacion.isEmpty() || Genero.isEmpty()){
                 JOptionPane.showMessageDialog(ventana7, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            int nroEjemplares = Integer.parseInt(Ejemplares);
-            Libro libro = new Libro(Nombre, autor, editorial, Genero, Publicacion, nroEjemplares);
+            Libro libro = new Libro(Nombre, autor, editorial, Genero, Publicacion, Ejemplares);
             libros.agregarLibro(libro);
+            libros.guardarLibrosEnArchivo("Libros.txt");
+            settableLibro();
             JOptionPane.showMessageDialog(ventana7, "Registro exitoso del libro" );
             limpiarCamposLibro();
         } catch (Exception e) {

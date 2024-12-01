@@ -25,7 +25,6 @@ public class ArregloCarnet implements Interface,Serializable{
             this.carnet[indice] = carnet;
             indice++;
         }
-
     }
 
     public boolean Eliminarcarnet(int id) {
@@ -52,7 +51,7 @@ public class ArregloCarnet implements Interface,Serializable{
         for (int i = 0; i < this.carnet.length; i++) {
             if (this.carnet[i] != null && this.carnet[i].getId_carnet() == id) {
                 if (!this.carnet[i].isActivo()) {
-                    this.carnet[i].setEstado("Activo");
+                    this.carnet[i].setEstado("activo");
                     result = true;
                     return result;
                 }
@@ -67,6 +66,7 @@ public class ArregloCarnet implements Interface,Serializable{
             if (this.carnet[i] != null && this.carnet[i].getId_carnet() == id) {
                 if (!this.carnet[i].isinactivo()) {
                     result = true;
+                    this.carnet[i].setEstado("inactivo");
                     return result;
                 }
             }
@@ -80,6 +80,7 @@ public class ArregloCarnet implements Interface,Serializable{
             if (this.carnet[i] != null && this.carnet[i].getId_carnet() == id) {
                 if (!this.carnet[i].isbloqueado()) {
                     result = true;
+                    this.carnet[i].setEstado("bloqueado");
                     return result;
                 }
             }

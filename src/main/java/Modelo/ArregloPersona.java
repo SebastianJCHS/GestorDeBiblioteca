@@ -214,7 +214,7 @@ public class ArregloPersona implements Interface, Serializable {
         System.out.println("Error al convertir datos numéricos: " + e.getMessage());
     }
 }
-
+    
     public void guardarAdminsEnArchivo(String rutaArchivo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Persona persona : this.personas) {

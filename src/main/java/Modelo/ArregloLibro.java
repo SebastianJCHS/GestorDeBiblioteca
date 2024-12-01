@@ -18,7 +18,7 @@ public class ArregloLibro implements Interface{
     }
 
     public void agregarLibro(Libro libro) {
-        if (this.libros[indice] == null) {
+        if (this.indice < this.libros.length) {
             this.libros[indice] = libro;
             indice++;
         }
