@@ -2,6 +2,7 @@ package Modelo;
 import Interfaces.Interface;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -125,8 +126,15 @@ public class ArregloCarnet implements Interface,Serializable{
     public Object[][] getDatos() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-   public void cargarCarnetsDesdeArchivo(String rutaArchivo) {
+ 
+
+    @Override
+    public void guardarArchivo(String rutaArchivo) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarArchivo(String rutaArchivo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -145,12 +153,30 @@ public class ArregloCarnet implements Interface,Serializable{
 
                     Carnet carnet = new Carnet(idCarnet, estadoCarnet);
                     AgregarCarnet(carnet);
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Error al leer del archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error al convertir datos numéricos: " + e.getMessage());
         }
-    } catch (IOException e) {
-        System.out.println("Error al leer del archivo: " + e.getMessage());
-    } catch (NumberFormatException e) {
-        System.out.println("Error al convertir datos numéricos: " + e.getMessage());
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
+
+    @Override
+    public void EliminarArchivo(String rutaArchivo) {
+       File archivo;
+       try {
+           archivo = new File(rutaArchivo);
+           if(!archivo.exists()){
+               System.out.println("El archivo no existe");
+           }else{
+               archivo.delete();
+               System.out.println("Archivo eliminado con exito");
+           }
+       } catch (Exception e) {
+           System.out.println("Error al leer el archivo: " + e.getMessage());
+       }
+        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

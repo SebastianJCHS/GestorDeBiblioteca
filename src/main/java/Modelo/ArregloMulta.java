@@ -2,6 +2,7 @@ package Modelo;
 import Interfaces.Interface;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -88,7 +89,8 @@ public class ArregloMulta implements Interface {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public void guardarMultasEnArchivo(String rutaArchivo) {
+    @Override
+    public void guardarArchivo(String rutaArchivo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Multa multa : this.multa) {
                 if(multa!=null && multa.getCliente() != null && multa.getCliente().getCarnet() != null){
@@ -104,16 +106,17 @@ public class ArregloMulta implements Interface {
                              multa.getCliente().getCarnet().getId_carnet() + "," +
                              multa.getCliente().getCarnet().getEstado() + "," +
                              multa.getEstado());
-                    writer.newLine();   
+                 writer.newLine();   
                 }
-            
             }
-    } catch (IOException e) {
-        System.out.println("Error al guardar en el archivo: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error al guardar en el archivo: " + e.getMessage());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
-    //Esta funcion es para Cargar las multas al arreglo, lo completa el que le toca, es la misma logica que el de cliente y los demas
-    public void cargarMultasDesdeArchivo(String rutaArchivo) {
+
+    @Override
+    public void cargarArchivo(String rutaArchivo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -132,17 +135,35 @@ public class ArregloMulta implements Interface {
                     String EstadoCarnet = partes[10].trim();
                     String EstadoMulta = partes[11].trim();
                     Carnet carnet = new Carnet(id, EstadoCarnet);
-                    Cliente cliente = new Cliente(Nombres, Apellido, edad, telefono, telefono, DNI, rol, carnet);
-                    Multa multa =new Multa(monto, cliente);
+                    Cliente cliente = new Cliente(Nombres, Apellido, edad, correo, telefono, DNI, rol, carnet);
+                    Multa multa =new Multa(monto, cliente, EstadoMulta);
                     AgregarMulta(multa);
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Error al leer del archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error al convertir datos numéricos: " + e.getMessage());
         }
-    } catch (IOException e) {
-        System.out.println("Error al leer del archivo: " + e.getMessage());
-    } catch (NumberFormatException e) {
-        System.out.println("Error al convertir datos numéricos: " + e.getMessage());
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
+
+    @Override
+    public void EliminarArchivo(String rutaArchivo) {
+        File archivo;
+       try {
+           archivo = new File(rutaArchivo);
+           if(!archivo.exists()){
+               System.out.println("El archivo no existe");
+           }else{
+               archivo.delete();
+               System.out.println("Archivo eliminado con exito");
+           }
+       } catch (Exception e) {
+           System.out.println("Error al leer el archivo: " + e.getMessage());
+       }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
 

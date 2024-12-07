@@ -9,4 +9,7 @@ public interface Interface {
     public boolean islleno();
     public void aumentar();
     public Object[][] getDatos();
+    public void guardarArchivo(String rutaArchivo);
+    public void cargarArchivo(String rutaArchivo);
+    public void EliminarArchivo(String rutaArchivo);
 }

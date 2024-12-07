@@ -214,8 +214,9 @@ public class ArregloPersona implements Interface, Serializable {
         System.out.println("Error al convertir datos numéricos: " + e.getMessage());
     }
 }
-    
-    public void guardarAdminsEnArchivo(String rutaArchivo) {
+
+    @Override
+    public void guardarArchivo(String rutaArchivo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Persona persona : this.personas) {
                 if (persona instanceof Administrador administrador) {
@@ -229,14 +230,16 @@ public class ArregloPersona implements Interface, Serializable {
                              administrador.getRol() + "," +
                              administrador.getID_admin());
                 writer.newLine(); // Salto de línea para el siguiente cliente
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Error al guardar en el archivo: " + e.getMessage());
         }
-    } catch (IOException e) {
-        System.out.println("Error al guardar en el archivo: " + e.getMessage());
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
     
-    public void cargarAdminsDesdeArchivo(String rutaArchivo) {
+    @Override
+    public void cargarArchivo(String rutaArchivo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -257,12 +260,30 @@ public class ArregloPersona implements Interface, Serializable {
                     Administrador administrador = new Administrador(id,nombres, apellidos, edad, correoElectronico, Telefono, dni, rol);
                 // Agregar el cliente al arreglo de personas
                 agregarPersona(administrador);
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Error al leer del archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error al convertir datos numéricos: " + e.getMessage());
         }
-    } catch (IOException e) {
-        System.out.println("Error al leer del archivo: " + e.getMessage());
-    } catch (NumberFormatException e) {
-        System.out.println("Error al convertir datos numéricos: " + e.getMessage());
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
+
+    @Override
+    public void EliminarArchivo(String rutaArchivo) {
+        File archivo;
+       try {
+           archivo = new File(rutaArchivo);
+           if(!archivo.exists()){
+               System.out.println("El archivo no existe");
+           }else{
+               archivo.delete();
+               System.out.println("Archivo eliminado con exito");
+           }
+       } catch (Exception e) {
+           System.out.println("Error al leer el archivo: " + e.getMessage());
+       }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
