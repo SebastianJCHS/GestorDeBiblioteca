@@ -38,7 +38,7 @@ public class PrestacionLibro {
     public void generarMulta() {
         if (estaPendiente() && multa == null) {
             float montoMulta = calcularMontoMulta();
-            this.multa = new Multa(montoMulta, cliente);
+            this.multa = new Multa(montoMulta, cliente, "pendiente");
         }
     }
 

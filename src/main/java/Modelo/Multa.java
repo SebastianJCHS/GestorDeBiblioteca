@@ -9,11 +9,11 @@ public class Multa {
     private Cliente cliente;
     private String estado; 
 
-    public Multa(float monto, Cliente cliente) {
+    public Multa(float monto, Cliente cliente, String estado) {
         this.monto = monto;
         this.fecha = LocalDate.now().format(DateTimeFormatter.ISO_DATE); // Fecha actual
         this.cliente = cliente;
-        this.estado = "pendiente";
+        this.estado = estado;
     }
 
     public Multa() {

@@ -2,6 +2,7 @@ package Modelo;
 import Interfaces.Interface;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -132,8 +133,8 @@ public class ArregloMulta implements Interface {
                     String EstadoCarnet = partes[10].trim();
                     String EstadoMulta = partes[11].trim();
                     Carnet carnet = new Carnet(id, EstadoCarnet);
-                    Cliente cliente = new Cliente(Nombres, Apellido, edad, telefono, telefono, DNI, rol, carnet);
-                    Multa multa =new Multa(monto, cliente);
+                    Cliente cliente = new Cliente(Nombres, Apellido, edad, correo, telefono, DNI, rol, carnet);
+                    Multa multa =new Multa(monto, cliente, EstadoMulta);
                     AgregarMulta(multa);
             }
         }
@@ -143,6 +144,20 @@ public class ArregloMulta implements Interface {
         System.out.println("Error al convertir datos numéricos: " + e.getMessage());
     }
 }
+    public void EliminarArchivoMulta(String rutaArchivo){
+        File Archivo;
+        try {
+            Archivo = new File(rutaArchivo);
+            if(!Archivo.exists()){
+                System.out.println("El archivo no existe");
+            }else{
+                Archivo.delete();
+                System.out.println("Archivo eliminado con exito");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }       
+    }
 }
 
 

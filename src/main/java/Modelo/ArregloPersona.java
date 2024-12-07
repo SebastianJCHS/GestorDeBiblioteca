@@ -265,4 +265,18 @@ public class ArregloPersona implements Interface, Serializable {
         System.out.println("Error al convertir datos numéricos: " + e.getMessage());
     }
 }
+    public void EliminarArchivoPersona(String rutaArchivo){
+        File Archivo;
+        try {
+            Archivo = new File(rutaArchivo);
+            if(!Archivo.exists()){
+                System.out.println("El archivo no existe");
+            }else{
+                Archivo.delete();
+                System.out.println("Archivo eliminado con exito");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }       
+    }
 }

@@ -1,2 +1,1 @@
-Luis,Morales,20,ejemplo@cliente,12134,123456789,Cliente,123456789,activo
-Juan,Estrada,20,another@gmail.com,123456,741852963,Cliente,741852963,activo
+Luis,Morales,20,ejemplo@gmail.com,1234,123456789,Cliente,123456789,inactivo
