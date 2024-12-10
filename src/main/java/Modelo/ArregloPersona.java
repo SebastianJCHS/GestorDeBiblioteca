@@ -4,13 +4,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Serializable;
-import java.util.Scanner;
-public class ArregloPersona implements Interface, Serializable {
+import java.util.ArrayList;
+import java.util.List;
+public class ArregloPersona implements Interface {
     private int indice, multitud;
     private Persona[] personas;
     private String[] cabecera = {"NOMBRES", "APELLIDOS", "EDAD", "CORREO ELECTRONICO", "DNI", "ROL", "ID", "ESTADO"};
@@ -94,6 +92,19 @@ public class ArregloPersona implements Interface, Serializable {
         return listaPersonas;
     }
 
+    public void eliminarClientesDelArreglo() {
+        int nuevoIndice = 0;
+        for (int i = 0; i < personas.length; i++) {
+            if (!(personas[i] instanceof Cliente)) { // Mantener las personas que no sean clientes
+                personas[nuevoIndice] = personas[i];
+                nuevoIndice++;
+            }
+        }
+        // Llenar el resto del arreglo con null para evitar referencias antiguas
+        for (int i = nuevoIndice; i < personas.length; i++) {
+            personas[i] = null;
+        }
+}
     @Override
     public String[] getcabecera() {
         return cabecera;
@@ -284,6 +295,40 @@ public class ArregloPersona implements Interface, Serializable {
        } catch (Exception e) {
            System.out.println("Error al leer el archivo: " + e.getMessage());
        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void ActualizarArchivo(String rutaArchivo, int id, String nuevoEstado) {
+    File archivo = new File(rutaArchivo);
+    List<String> lineasActualizadas = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        String linea;
+
+        while ((linea = reader.readLine()) != null) {
+            String[] partes = linea.split(",");
+            
+            // Identificar la línea del carnet
+            if (partes.length >= 9 && partes[7].equals(String.valueOf(id))) {
+                partes[8] = nuevoEstado; // Actualizar el estado
+                linea = String.join(",", partes);
+            }
+            lineasActualizadas.add(linea); // Guardar la línea modificada o sin cambios
+        }
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo: " + e.getMessage());
+        return;
+    }
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+        for (String lineaActualizada : lineasActualizadas) {
+            writer.write(lineaActualizada);
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+    }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

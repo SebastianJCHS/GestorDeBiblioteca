@@ -28,6 +28,7 @@ import Modelo.PrestacionLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorCliente {
     private MenuCliente ventana1;
@@ -47,6 +48,7 @@ public class ControladorCliente {
     private Multa multa;
     private PrestacionLibro prestamo;
     private LoginAdminCliente ventana6;
+    private int id_actual;
 
     public ControladorCliente(MenuCliente ventana1, RegistroCliente ventana2, VentanaClienteBuscarCarnet ventana3, VentanaPrestamoLibro ventana4, VentanaPagarMulta ventana5, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo, LoginAdminCliente ventana6) {
         this.ventana1 = ventana1;
@@ -70,7 +72,7 @@ public class ControladorCliente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iniciarSesion();
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana2.btnVolverventanalogin.addActionListener(new ActionListener() {
@@ -79,7 +81,7 @@ public class ControladorCliente {
                 ventana2.setVisible(false);
                 ventana6.setLocationRelativeTo(null);
                 ventana6.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana1.btnMenuRegistroLibro.addActionListener(new ActionListener() {
@@ -88,7 +90,7 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana4.setLocationRelativeTo(null);
                 ventana4.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana1.btnMenuMulta.addActionListener(new ActionListener() {
@@ -97,7 +99,9 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana5.setLocationRelativeTo(null);
                 ventana5.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                settableMulta();
+                actualizarTabla();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana1.btnMenuCarnet.addActionListener(new ActionListener() {
@@ -106,7 +110,7 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana3.setLocationRelativeTo(null);
                 ventana3.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana1.btnregresoInicio.addActionListener(new ActionListener() {
@@ -115,7 +119,7 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana6.setLocationRelativeTo(null);
                 ventana6.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana3.btnregresoInicio.addActionListener(new ActionListener() {
@@ -124,14 +128,14 @@ public class ControladorCliente {
                 ventana3.setVisible(false);
                 ventana1.setLocationRelativeTo(null);
                 ventana1.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana3.btnBusquedaCarnet1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarCarnet();
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana4.btnregresoInicio.addActionListener(new ActionListener() {
@@ -140,14 +144,14 @@ public class ControladorCliente {
                 ventana4.setVisible(false);
                 ventana1.setLocationRelativeTo(null);
                 ventana1.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana4.btnPrestamoLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 realizarPrestamo();
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana5.btnregresoInicio.addActionListener(new ActionListener() {
@@ -156,12 +160,31 @@ public class ControladorCliente {
                 ventana5.setVisible(false);
                 ventana1.setLocationRelativeTo(null);
                 ventana1.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
 
     }
-
+    public void setID(int id){
+        this.id_actual = id;
+    }
+    public int getID(){
+        return this.id_actual;
+    }
+    
+    public void settableMulta(){
+        String[] cabeceras = multas.getcabecera();
+        DefaultTableModel modelotabla = new DefaultTableModel(multas.getDatos(), cabeceras);
+        this.ventana5.tbVisualizarMultas.setModel(modelotabla);
+    }
+    
+    public void actualizarTabla(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) ventana5.tbVisualizarMultas.getModel();
+        modeloTabla.setRowCount(0);
+        Object[] fila = multas.cargarMultasPorCliente(id_actual);
+        modeloTabla.addRow(fila);
+    }  
+    
     private void iniciarSesion() {
         try {
             int id = Integer.parseInt(ventana2.IdInicioSesionCliente.getText().trim());
@@ -174,6 +197,7 @@ public class ControladorCliente {
                     ventana2.setVisible(false);
                     ventana1.setLocationRelativeTo(null);
                     ventana1.setVisible(true);
+                    setID(id);
                 } else {
                     JOptionPane.showMessageDialog(ventana2, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
