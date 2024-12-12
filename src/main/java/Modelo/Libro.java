@@ -8,6 +8,7 @@ public class Libro {
     private String fechaPublicacion;
     private int nrjemeplares;
     private Ejemplar[] ejemplares;
+    private String estado;
     
     public Libro(String nombre, String autor, String editorial, String genero, String fechaPublicacion, int numEjemplares){
         this.nombre = nombre;
@@ -22,6 +23,7 @@ public class Libro {
             ejemplares[i] = new Ejemplar(i + 1, "Disponible");
         }
     }
+    
 
     public Libro() {
     }

@@ -50,9 +50,11 @@ public class Carnet {
     public void setMulta(Multa multa) {
         this.multa = multa;
     }
-    
+
     @Override
     public String toString() {
-        return "Carnet{" + "Id_carnet=" + Id_carnet + ", estado=" + estado + '}';
+        return "Carnet{" + "Id_carnet=" + Id_carnet + ", multa=" + multa + ", estado=" + estado + '}';
     }
+    
+    
 }

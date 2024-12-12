@@ -27,6 +27,7 @@ import Modelo.Persona;
 import Modelo.PrestacionLibro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.management.StringValueExp;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,6 +73,7 @@ public class ControladorCliente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 iniciarSesion();
+                limpiardatosInicio();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -110,6 +112,7 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana3.setLocationRelativeTo(null);
                 ventana3.setVisible(true);
+                buscarCarnet();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -211,17 +214,16 @@ public class ControladorCliente {
     
     private void buscarCarnet() {
         try {
-            int idCarnet = Integer.parseInt(ventana3.IdCarnet1.getText().trim());
-
+            int idCarnet = id_actual;
+            ventana3.IdCarnet1.setText(String.valueOf(idCarnet));
             Carnet carnet = carnets.BuscarCarnet(idCarnet);
             if (carnet != null) {
-                Cliente cliente = (Cliente) personas.buscarPersonaPorIdCarnet(idCarnet);
+                Cliente cliente = buscarClientePorCarnet(carnet);
                 if (cliente != null) {
                     ventana3.ClienteCarnet1.setText(cliente.getNombres() + " " + cliente.getApellidos());
                     ventana3.EstadoCarnet.setText(carnet.getEstado());
-
-                    // Verificar si el cliente tiene deudas
-                    if (cliente.getCarnet().getMulta() != null && "pendiente".equals(cliente.getCarnet().getMulta().getEstado())) {
+                    Multa multa = buscarMultaPorCliente(cliente);
+                    if (multa != null && multa.getEstado().equals("pendiente")) {
                         ventana3.DeudasClientes.setText("Sí");
                     } else {
                         ventana3.DeudasClientes.setText("No");
@@ -236,6 +238,28 @@ public class ControladorCliente {
             JOptionPane.showMessageDialog(ventana3, "Error: Verifique que el ID sea correcto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private Cliente buscarClientePorCarnet(Carnet carnet) {
+        for (Persona persona : personas.mostrarPersonas()) {
+            if (persona instanceof Cliente) {
+                Cliente cliente = (Cliente) persona;
+                if (cliente.getCarnet() != null && cliente.getCarnet().getId_carnet() == carnet.getId_carnet()) {
+                    return cliente;
+                }
+            }
+        }
+        return null;
+    }
+    
+    private Multa buscarMultaPorCliente(Cliente cliente) {
+        for (Multa multa : multas.mostrarMultas()) {
+            if (multa != null && multa.getCliente() != null 
+                && multa.getCliente().getCarnet().getId_carnet() == cliente.getCarnet().getId_carnet()) {
+            return multa;
+            }
+        }
+        return null;
+    }
+    
     
     private void realizarPrestamo() {
         try {
@@ -284,5 +308,7 @@ public class ControladorCliente {
             JOptionPane.showMessageDialog(ventana4, "Error: Verifique que los campos numéricos sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+    private void limpiardatosInicio(){
+        ventana2.IdInicioSesionCliente.setText("");
+    }
 }

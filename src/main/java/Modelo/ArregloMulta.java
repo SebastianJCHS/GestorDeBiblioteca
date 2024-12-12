@@ -52,6 +52,13 @@ public class ArregloMulta implements Interface {
         return listaMultas; 
     }
     
+    public void mostrar(){
+        Multa[] todaslasmultas = mostrarMultas();
+        for(Multa multa: todaslasmultas){
+            System.out.println(multa.toString());
+        }
+    }
+    
     @Override
     public String[] getcabecera() {
         return cabecera;

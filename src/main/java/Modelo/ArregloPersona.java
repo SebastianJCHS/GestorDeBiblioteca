@@ -91,7 +91,18 @@ public class ArregloPersona implements Interface {
         System.arraycopy(this.personas, 0, listaPersonas, 0, indice);
         return listaPersonas;
     }
-
+    public boolean CambiarCarnetCliente(int id, String estado){
+        for (Persona persona : mostrarPersonas()) {
+            if (persona instanceof Cliente) {
+                Cliente cliente = (Cliente) persona;
+                if (cliente.getCarnet() != null && cliente.getCarnet().getId_carnet() == id) {
+                    cliente.getCarnet().setEstado(estado);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public void eliminarClientesDelArreglo() {
         int nuevoIndice = 0;
         for (int i = 0; i < personas.length; i++) {
@@ -104,7 +115,7 @@ public class ArregloPersona implements Interface {
         for (int i = nuevoIndice; i < personas.length; i++) {
             personas[i] = null;
         }
-}
+    }
     @Override
     public String[] getcabecera() {
         return cabecera;

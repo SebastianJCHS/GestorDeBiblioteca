@@ -38,4 +38,10 @@ public class Multa {
     public void pagarMulta() {
         this.estado = "pagado"; 
     }
+
+    @Override
+    public String toString() {
+        return "Multa{" + "monto=" + monto + ", fecha=" + fecha + ", cliente=" + cliente + ", estado=" + estado + '}';
+    }
+    
 }
