@@ -350,12 +350,9 @@ public class ControladorAdmin {
     }
     
     public void recargarDatos(){
-        personas.eliminarClientesDelArreglo();
-        multas.eliminarMultasArreglo();
         personas.cargarClientesDesdeArchivo("Clientes.txt");
         multas.cargarArchivo("Multas.txt");
         vincularCarnetsYMultas();
-        //carnets.VincularCarnet("Multas.txt");
     }
     
     public void settable(){
@@ -524,7 +521,6 @@ public class ControladorAdmin {
     
     private void buscarCarnet() {
         try {
-            recargarDatos();
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             Carnet carnet = carnets.BuscarCarnet(id);
             if (carnet != null) {
@@ -576,12 +572,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarBloqueado(id);
-            boolean resultado2 = personas.CambiarCarnetCliente(id, "bloqueado");
-            if (resultado2) {
+            if (resultado) {
+                personas.CambiarCarnetCliente(id, "bloqueado");
                 ventana8.EstadoCarnet.setText("bloqueado");
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "bloqueado");
                 multas.ActualizarArchivo("Multas.txt", id, "bloqueado");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet bloqueado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -597,12 +595,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarInactivo(id);
-            boolean resultado2 = personas.CambiarCarnetCliente(id, "inactivo");
-            if (resultado2) {
+            if (resultado) {
+                personas.CambiarCarnetCliente(id, "inactivo");
                 ventana8.EstadoCarnet.setText("inactivo");
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "inactivo");
                 multas.ActualizarArchivo("Multas.txt", id, "inactivo");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet desactivado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -618,12 +618,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarActivo(id);
-            boolean resultado2 = personas.CambiarCarnetCliente(id, "activo");
-            if (resultado2) {
+            if (resultado) {
+                personas.CambiarCarnetCliente(id, "activo");
                 ventana8.EstadoCarnet.setText("activo");
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "activo");
                 multas.ActualizarArchivo("Multas.txt", id, "activo");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet activado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

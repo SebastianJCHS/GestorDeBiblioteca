@@ -185,6 +185,7 @@ public class ArregloMulta implements Interface {
         for(int i = 0; i < multa.length; i++){
             this.multa[i] = null;
         }
+        this.indice = 0;
     }
 
     public Object[] cargarMultasPorCliente(int idCarnet) {
