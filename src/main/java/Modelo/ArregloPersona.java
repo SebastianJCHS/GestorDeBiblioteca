@@ -74,6 +74,15 @@ public class ArregloPersona implements Interface {
         return null;
     }
     
+public Cliente buscarPersonaPorIdCliente(String idCliente) {
+    for (int i = 0; i < indice; i++) {
+        if (this.personas[i] instanceof Cliente && this.personas[i].getDNI().equals(idCliente)) {
+            return (Cliente) this.personas[i]; 
+        }
+    }
+    return null; 
+}
+    
     public Persona buscarAdminPorID(String Id){
         for (int i = 0; i < indice; i++) {
             if(this.personas[i] instanceof Administrador){

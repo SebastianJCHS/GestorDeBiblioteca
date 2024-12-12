@@ -29,6 +29,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import vista.VentanaPagarMulta2;
 
 public class ControladorCliente {
     private MenuCliente ventana1;
@@ -36,6 +37,7 @@ public class ControladorCliente {
     private VentanaClienteBuscarCarnet ventana3;
     private VentanaPrestamoLibro ventana4;
     private VentanaPagarMulta ventana5;
+    private VentanaPagarMulta2 ventana7;
     private ArregloPersona personas;
     private Administrador administrador;
     private ArregloCarnet carnets;
@@ -50,12 +52,13 @@ public class ControladorCliente {
     private LoginAdminCliente ventana6;
     private int id_actual;
 
-    public ControladorCliente(MenuCliente ventana1, RegistroCliente ventana2, VentanaClienteBuscarCarnet ventana3, VentanaPrestamoLibro ventana4, VentanaPagarMulta ventana5, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo, LoginAdminCliente ventana6) {
+    public ControladorCliente(VentanaPagarMulta2 ventana7,MenuCliente ventana1, RegistroCliente ventana2, VentanaClienteBuscarCarnet ventana3, VentanaPrestamoLibro ventana4, VentanaPagarMulta ventana5, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo, LoginAdminCliente ventana6) {
         this.ventana1 = ventana1;
         this.ventana2 = ventana2;
         this.ventana3 = ventana3;
         this.ventana4 = ventana4;
         this.ventana5 = ventana5;
+        this.ventana7 = ventana7;
         this.personas = personas;
         this.administrador = administrador;
         this.carnets = carnets;
@@ -122,6 +125,15 @@ public class ControladorCliente {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana1.btnMenuMulta1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana1.setVisible(false);
+                ventana7.setLocationRelativeTo(null);
+                ventana7.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
         this.ventana3.btnregresoInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -163,8 +175,28 @@ public class ControladorCliente {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-
+        this.ventana7.btnVolverPagarMulta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana7.setVisible(false);
+                ventana1.setLocationRelativeTo(null);
+                ventana1.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana7.btnPagar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pagarMulta();
+                ventana7.TextPagarMulta.setText("");
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
     }
+    
+    
+    
     public void setID(int id){
         this.id_actual = id;
     }
@@ -198,6 +230,7 @@ public class ControladorCliente {
                     ventana1.setLocationRelativeTo(null);
                     ventana1.setVisible(true);
                     setID(id);
+                    id_actual = carnet.getId_carnet();
                 } else {
                     JOptionPane.showMessageDialog(ventana2, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -206,6 +239,41 @@ public class ControladorCliente {
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(ventana2, "Error: Verifique que el ID sea correcto.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void pagarMulta(){
+        try {
+            String idCliente = ventana7.TextPagarMulta.getText().trim();
+            int id = Integer.parseInt(ventana7.TextPagarMulta.getText().trim());
+           
+            if(id == id_actual){
+                JOptionPane.showMessageDialog(ventana7, "Cliente verificado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                Cliente cliente = (Cliente) personas.buscarPersonaPorIdCliente(idCliente);
+                if (cliente != null) {
+                    System.out.println("");
+                    System.out.println(cliente.getNombres());
+                   
+                    // Verificar si el cliente tiene deudas
+                    if (cliente.getCarnet() != null && cliente.getCarnet().getMulta() != null) {
+                        String estadoMulta = cliente.getCarnet().getMulta().getEstado();
+                        System.out.println(estadoMulta);
+                        if ("pendiente".equalsIgnoreCase(estadoMulta.trim())) {
+                            //logica para cambiar el estado de la multa
+                        } else {
+                            //lo contrario
+                        }
+                    }else{
+                         JOptionPane.showMessageDialog(ventana7, "Usted no tiene multa", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                JOptionPane.showMessageDialog(ventana7, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(ventana7, "Error: su id no corresponde.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(ventana7, "Error: Verifique que su ID sea correcto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -220,9 +288,15 @@ public class ControladorCliente {
                     ventana3.ClienteCarnet1.setText(cliente.getNombres() + " " + cliente.getApellidos());
                     ventana3.EstadoCarnet.setText(carnet.getEstado());
 
+
                     // Verificar si el cliente tiene deudas
-                    if (cliente.getCarnet().getMulta() != null && "pendiente".equals(cliente.getCarnet().getMulta().getEstado())) {
-                        ventana3.DeudasClientes.setText("Sí");
+                    if (cliente.getCarnet() != null && cliente.getCarnet().getMulta() != null) {
+                        String estadoMulta = cliente.getCarnet().getMulta().getEstado();
+                        if ("pendiente".equalsIgnoreCase(estadoMulta.trim())) {
+                            ventana3.DeudasClientes.setText("Sí");
+                        } else {
+                            ventana3.DeudasClientes.setText("No");
+                        }
                     } else {
                         ventana3.DeudasClientes.setText("No");
                     }
