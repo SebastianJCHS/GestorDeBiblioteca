@@ -255,6 +255,38 @@ public class ArregloMulta implements Interface {
     }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public void actualizarEstadoMulta(String rutaArchivo, int id, String nuevoEstadoMulta) {
+        File archivo = new File(rutaArchivo);
+        List<String> lineasActualizadas = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+
+                // Identificar la línea del carnet
+                if (partes.length >= 12 && partes[9].equals(String.valueOf(id))) {
+                    partes[11] = nuevoEstadoMulta; // Actualizar el estado
+                    linea = String.join(",", partes);
+                }
+                lineasActualizadas.add(linea); // Guardar la línea modificada o sin cambios
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+            for (String lineaActualizada : lineasActualizadas) {
+                writer.write(lineaActualizada);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
-
-

@@ -32,6 +32,7 @@ public class MenuCliente extends javax.swing.JFrame {
         btnMenuRegistroLibro = new javax.swing.JButton();
         btnMenuCarnet = new javax.swing.JButton();
         btnMenuMulta = new javax.swing.JButton();
+        btnMenuPagarMulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,10 +71,19 @@ public class MenuCliente extends javax.swing.JFrame {
 
         btnMenuMulta.setBackground(new java.awt.Color(0, 102, 102));
         btnMenuMulta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnMenuMulta.setText("Pagar multas");
+        btnMenuMulta.setText("Visualizar multas");
         btnMenuMulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuMultaActionPerformed(evt);
+            }
+        });
+
+        btnMenuPagarMulta.setBackground(new java.awt.Color(0, 102, 102));
+        btnMenuPagarMulta.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnMenuPagarMulta.setText("Pagar multas");
+        btnMenuPagarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuPagarMultaActionPerformed(evt);
             }
         });
 
@@ -81,10 +91,6 @@ public class MenuCliente extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(120, 120, 120))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -92,18 +98,23 @@ public class MenuCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnMenuCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMenuRegistroLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMenuMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnMenuMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMenuPagarMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnregresoInicio)))
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(105, 105, 105))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnregresoInicio)
-                .addGap(51, 51, 51)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuRegistroLibro)
@@ -111,7 +122,9 @@ public class MenuCliente extends javax.swing.JFrame {
                 .addComponent(btnMenuCarnet)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuMulta)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnMenuPagarMulta)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,6 +157,10 @@ public class MenuCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenuMultaActionPerformed
 
+    private void btnMenuPagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuPagarMultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenuPagarMultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -151,6 +168,7 @@ public class MenuCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnMenuCarnet;
     public javax.swing.JButton btnMenuMulta;
+    public javax.swing.JButton btnMenuPagarMulta;
     public javax.swing.JButton btnMenuRegistroLibro;
     public javax.swing.JButton btnregresoInicio;
     private javax.swing.JLabel jLabel7;

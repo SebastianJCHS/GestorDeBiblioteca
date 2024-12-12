@@ -1,5 +1,5 @@
 100.0,2024-12-11,Luis,Morales,20,ejemplo@cliente,123456,123456789,Cliente,123456789,activo,pendiente
 100.0,2024-12-11,Juan,Castilla,20,ejemplo2@gmail.com,123456,74185263,Cliente,74185263,inactivo,pendiente
-100.0,2024-12-11,Ivan,Nunez,20,gmail,123,1234,Cliente,1234,activo,pendiente
+100.0,2024-12-11,Ivan,Nunez,20,gmail,123,1234,Cliente,1234,bloqueado,pagado
 100.0,2024-12-11,Luis,Morales,20,ejemplo@cliente,123456,123456789,Cliente,123456789,activo,pendiente
 100.0,2024-12-11,Jose,Castilla,20,ejemplo3@gmail.com,12345678910,1111,Cliente,1111,activo,pendiente

@@ -114,6 +114,14 @@ public class ArregloPersona implements Interface {
             personas[i] = null;
         }
     }
+    public Cliente buscarPersonaPorIdCliente(String idCliente) {
+        for (int i = 0; i < indice; i++) {
+            if (this.personas[i] instanceof Cliente && this.personas[i].getDNI().equals(idCliente)) {
+                return (Cliente) this.personas[i]; 
+            }
+        }
+        return null; 
+    }
 
     @Override
     public String[] getcabecera() {
@@ -339,6 +347,11 @@ public class ArregloPersona implements Interface {
     } catch (IOException e) {
         System.out.println("Error al escribir en el archivo: " + e.getMessage());
     }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
