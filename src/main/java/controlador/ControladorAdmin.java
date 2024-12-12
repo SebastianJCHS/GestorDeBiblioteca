@@ -38,6 +38,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import vista.VentanaEliminarLibro;
+import vista.VentanaModificarLibro;
+
 public class ControladorAdmin {
     private LoginAdminCliente ventana1;
     private VentanaRegistroAdmin ventana2;
@@ -50,6 +53,8 @@ public class ControladorAdmin {
     private VentanaRegistroLibros ventana13;
     private VentanaVerificarLibro ventana14;
     private MenuAdmin ventana15;
+    private VentanaEliminarLibro ventana16;
+    private VentanaModificarLibro ventana17;
     private ArregloPersona personas;
     private ArregloCarnet carnets;
     private ArregloLibro libros;
@@ -61,7 +66,7 @@ public class ControladorAdmin {
     private Multa multa;
     private PrestacionLibro prestamo;
 
-    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
+    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, VentanaEliminarLibro ventana16, VentanaModificarLibro ventana17, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
         this.ventana1 = ventana1;
         this.ventana2 = ventana2;
         this.ventana4 = ventana4;
@@ -73,6 +78,8 @@ public class ControladorAdmin {
         this.ventana13 = ventana13;
         this.ventana14 = ventana14;
         this.ventana15 = ventana15;
+        this.ventana16 = ventana16;
+        this.ventana17 = ventana17;
         this.personas = personas;
         this.carnets = carnets;
         this.libros = libros;
@@ -269,13 +276,16 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 añadirLibro();
+                ventana7.setVisible(true);
+                ventana7.setVisible(false);
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-        this.ventana7.btnVolverVentanalibro.addActionListener(new ActionListener() {
+        this.ventana7.btnVolverVentanaLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana7.setVisible(false);
+                
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -327,11 +337,62 @@ public class ControladorAdmin {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        
         this.ventana6.bnañadir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 añadirMulta();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana13.btnEliminarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana16.setLocationRelativeTo(null);
+                ventana16.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana16.btnVolverEliminarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpiarEliminarLibro();
+                ventana16.setVisible(false);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana13.btnModificarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana17.setLocationRelativeTo(null);
+                ventana17.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana17.btnVolverModificarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpiarModificarLibro();
+                ventana17.setVisible(false);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
+        this.ventana16.btnEliminarLibroPorEjemplar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            eliminarLibroEjemplar();
+            }
+        });
+        
+        this.ventana17.btnModificarLosEjemplares.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            modificarLibro();
             }
         });
     }
@@ -365,7 +426,6 @@ public class ControladorAdmin {
                     cliente.getCarnet().getEstado()
                 };
 
-            // Agregar la fila al modelo de la tabla
             modelo.addRow(fila);
             }
         }
@@ -373,6 +433,7 @@ public class ControladorAdmin {
     
     public void settableLibro(){
         String[] cabeceras = libros.getcabecera();
+        Object[][] datos = libros.getDatos();
         DefaultTableModel modelotabla = new DefaultTableModel(libros.getDatos(), cabeceras);
         this.ventana13.TablaLibros.setModel(modelotabla);
     }
@@ -653,7 +714,6 @@ public class ControladorAdmin {
             return;
         }
 
-        // Buscar el libro en el arreglo
         Libro libroEncontrado = libros.buscarLibroPorNombre(nombreLibro);
 
         if (libroEncontrado != null) {
@@ -664,8 +724,60 @@ public class ControladorAdmin {
             }
         } else {
             JOptionPane.showMessageDialog(ventana14, "No se encontró el libro en el sistema.", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
+    }
+    
+    private void eliminarLibroEjemplar() {
+        try {
+            String nombreLibro = ventana16.NombreLibroEliminar.getText().trim();
+        
+            if (nombreLibro.isEmpty()) {
+                JOptionPane.showMessageDialog(ventana16, "Por favor, ingrese el nombre del libro a eliminar un ejemplar.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            libros.eliminarEjemplarDeLibro(nombreLibro);
+
+            settableLibro();
+
+            JOptionPane.showMessageDialog(ventana16, "Ejemplar eliminado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(ventana16, "Error al eliminar el ejemplar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    private void modificarLibro() {
+        try {
+            String nombre = ventana17.NombreLibroModificar.getText().trim();
+            String autor = ventana17.AutorLibroModificar.getText().trim();
+            String genero = ventana17.GeneroLibroModificar.getText().trim();
+            String fechaPublicacion = ventana17.PublicacionLibroModificar.getText().trim();
+            String editorial = ventana17.EditorialLibroModificar.getText().trim();
+            int nroEjemplares = Integer.parseInt(ventana17.NEjemplaresLibroModificar.getText().trim());
+            
+            // Buscar el libro a modificar por nombre 
+            Libro libro = libros.buscarLibroPorNombre(nombre);
+
+            if (libro != null) {
+                libro.setNombre(nombre);
+                libro.setAutor(autor);
+                libro.setGenero(genero);
+                libro.setFechaPublicacion(fechaPublicacion);
+                libro.setEditorial(editorial);
+                libro.setNrjemeplares(nroEjemplares);
+
+                libros.guardarArchivo("Libros.txt");
+                JOptionPane.showMessageDialog(ventana17, "Libro modificado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                ventana17.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(ventana17, "El libro no fue encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(ventana17, "Error: Verifique los campos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     
     private void limpiarCamposCarnet() {
         ventana12.DniCliente.setText("");
@@ -708,7 +820,19 @@ public class ControladorAdmin {
     }
     
     private void limpiarVerificarLibro(){
-        ventana14.Ejemplar_Libro_Verificar.setText("");
         ventana14.NombreLibroVerificar.setText("");
+    }
+    
+    private void limpiarEliminarLibro(){
+        ventana16.NombreLibroEliminar.setText("");
+    }
+    
+    private void limpiarModificarLibro(){
+        ventana17.NombreLibroModificar.setText("");
+        ventana17.AutorLibroModificar.setText("");
+        ventana17.EditorialLibroModificar.setText("");
+        ventana17.GeneroLibroModificar.setText("");
+        ventana17.PublicacionLibroModificar.setText("");
+        ventana17.NEjemplaresLibroModificar.setText("");
     }
 }

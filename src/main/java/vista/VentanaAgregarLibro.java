@@ -40,7 +40,7 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         GeneroLibro = new javax.swing.JTextField();
         FechaPublicacionLibro = new javax.swing.JTextField();
-        btnVolverVentanalibro = new javax.swing.JButton();
+        btnVolverVentanaLibro = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,10 +130,15 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
             }
         });
 
-        btnVolverVentanalibro.setBackground(new java.awt.Color(0, 102, 102));
-        btnVolverVentanalibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnVolverVentanalibro.setForeground(new java.awt.Color(255, 255, 255));
-        btnVolverVentanalibro.setText("Volver");
+        btnVolverVentanaLibro.setBackground(new java.awt.Color(0, 102, 102));
+        btnVolverVentanaLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVolverVentanaLibro.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverVentanaLibro.setText("Volver");
+        btnVolverVentanaLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverVentanaLibroActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -147,7 +152,7 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnVolverVentanalibro)
+                        .addComponent(btnVolverVentanaLibro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -190,7 +195,7 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnVolverVentanalibro)))
+                        .addComponent(btnVolverVentanaLibro)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,6 +265,10 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarLibroActionPerformed
 
+    private void btnVolverVentanaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverVentanaLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverVentanaLibroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,7 +282,7 @@ public class VentanaAgregarLibro extends javax.swing.JFrame {
     public javax.swing.JTextField NombreLibro;
     public javax.swing.JTextField NroEjemplares;
     public javax.swing.JButton btnRegistrarLibro;
-    public javax.swing.JButton btnVolverVentanalibro;
+    public javax.swing.JButton btnVolverVentanaLibro;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

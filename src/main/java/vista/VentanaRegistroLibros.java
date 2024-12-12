@@ -38,6 +38,8 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
         btnVerificarLibroEjemplar = new javax.swing.JButton();
         btnRegreso = new javax.swing.JButton();
         btnActualizartabla = new javax.swing.JButton();
+        btnEliminarLibro = new javax.swing.JButton();
+        btnModificarLibro = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -83,6 +85,12 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(TablaLibros);
+        if (TablaLibros.getColumnModel().getColumnCount() > 0) {
+            TablaLibros.getColumnModel().getColumn(0).setHeaderValue("Title 1");
+            TablaLibros.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            TablaLibros.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            TablaLibros.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -91,7 +99,7 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
         btnVerificarLibroEjemplar.setBackground(new java.awt.Color(0, 102, 102));
         btnVerificarLibroEjemplar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVerificarLibroEjemplar.setForeground(new java.awt.Color(255, 255, 255));
-        btnVerificarLibroEjemplar.setText("Verificar Ejemplar");
+        btnVerificarLibroEjemplar.setText("Verificar Ejemplares");
         btnVerificarLibroEjemplar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerificarLibroEjemplarActionPerformed(evt);
@@ -118,43 +126,75 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarLibro.setBackground(new java.awt.Color(0, 102, 102));
+        btnEliminarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEliminarLibro.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarLibro.setText("Elminiar Libro");
+        btnEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarLibroActionPerformed(evt);
+            }
+        });
+
+        btnModificarLibro.setBackground(new java.awt.Color(0, 102, 102));
+        btnModificarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnModificarLibro.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificarLibro.setText("Modificar Libro");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnRegreso)
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnAñadirLibro)
-                                .addGap(71, 71, 71)
-                                .addComponent(btnVerificarLibroEjemplar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnActualizartabla)
-                                .addGap(17, 17, 17)))))
+                                .addComponent(btnRegreso)
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnAñadirLibro)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnVerificarLibroEjemplar)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(btnActualizartabla)
+                                        .addGap(87, 87, 87))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(btnEliminarLibro)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnModificarLibro)))
                 .addGap(0, 15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(btnRegreso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnRegreso))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAñadirLibro)
                     .addComponent(btnVerificarLibroEjemplar)
                     .addComponent(btnActualizartabla))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarLibro)
+                    .addComponent(btnModificarLibro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,9 +205,7 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -193,6 +231,10 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizartablaActionPerformed
 
+    private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarLibroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -202,6 +244,8 @@ public class VentanaRegistroLibros extends javax.swing.JFrame {
     public javax.swing.JTable TablaLibros;
     public javax.swing.JButton btnActualizartabla;
     public javax.swing.JButton btnAñadirLibro;
+    public javax.swing.JButton btnEliminarLibro;
+    public javax.swing.JButton btnModificarLibro;
     public javax.swing.JButton btnRegreso;
     public javax.swing.JButton btnVerificarLibroEjemplar;
     private javax.swing.JLabel jLabel1;
