@@ -18,6 +18,7 @@ public class Multa {
 
     public Multa() {
     }
+    
 
     public float getMonto() {
         return monto;

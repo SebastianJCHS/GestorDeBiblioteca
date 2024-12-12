@@ -1,4 +1,5 @@
 package Modelo;
+
 import Interfaces.Interface;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,8 +8,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ArregloCarnet implements Interface,Serializable{
+public class ArregloCarnet implements Interface, Serializable {
+
     private Carnet[] carnet;
     private int indice, tamaño;
     private String[] cabeceras = {"ID", "ESTADO"};
@@ -18,11 +22,9 @@ public class ArregloCarnet implements Interface,Serializable{
         this.carnet = new Carnet[tamaño];
         this.indice = 0;
     }
-    
-    
 
     public void AgregarCarnet(Carnet carnet) {
-        if (indice<this.carnet.length) {
+        if (indice < this.carnet.length) {
             this.carnet[indice] = carnet;
             indice++;
         }
@@ -103,7 +105,7 @@ public class ArregloCarnet implements Interface,Serializable{
     @Override
     public boolean islleno() {
         boolean resultado = false;
-        if(this.indice == this.tamaño){
+        if (this.indice == this.tamaño) {
             resultado = true;
             aumentar();
         }
@@ -113,9 +115,9 @@ public class ArregloCarnet implements Interface,Serializable{
 
     @Override
     public void aumentar() {
-        int tamaño = this.tamaño*2;
+        int tamaño = this.tamaño * 2;
         Carnet[] nuevoArreglo = new Carnet[tamaño];
-        for(int i=0; i<this.indice; i++){
+        for (int i = 0; i < this.indice; i++) {
             nuevoArreglo[i] = this.carnet[i];
         }
         this.carnet = nuevoArreglo;
@@ -126,7 +128,6 @@ public class ArregloCarnet implements Interface,Serializable{
     public Object[][] getDatos() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- 
 
     @Override
     public void guardarArchivo(String rutaArchivo) {
@@ -165,23 +166,28 @@ public class ArregloCarnet implements Interface,Serializable{
 
     @Override
     public void EliminarArchivo(String rutaArchivo) {
-       File archivo;
-       try {
-           archivo = new File(rutaArchivo);
-           if(!archivo.exists()){
-               System.out.println("El archivo no existe");
-           }else{
-               archivo.delete();
-               System.out.println("Archivo eliminado con exito");
-           }
-       } catch (Exception e) {
-           System.out.println("Error al leer el archivo: " + e.getMessage());
-       }
+        File archivo;
+        try {
+            archivo = new File(rutaArchivo);
+            if (!archivo.exists()) {
+                System.out.println("El archivo no existe");
+            } else {
+                archivo.delete();
+                System.out.println("Archivo eliminado con exito");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
         // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void ActualizarArchivo(String rutaArchivo, int id, String nuevoEstado) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
+
     }
 }

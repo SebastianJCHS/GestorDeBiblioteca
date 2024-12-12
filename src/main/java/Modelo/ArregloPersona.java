@@ -340,4 +340,8 @@ public Cliente buscarPersonaPorIdCliente(String idCliente) {
     }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
+       
+    }
 }

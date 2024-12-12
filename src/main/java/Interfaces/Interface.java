@@ -13,4 +13,5 @@ public interface Interface {
     public void cargarArchivo(String rutaArchivo);
     public void EliminarArchivo(String rutaArchivo);
     public void ActualizarArchivo(String rutaArchivo, int id, String nuevoEstado);
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta);
 }

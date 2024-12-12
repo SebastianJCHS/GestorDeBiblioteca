@@ -195,7 +195,27 @@ public class ControladorCliente {
         });
     }
     
+    private Cliente buscarClientePorCarnet(Carnet carnet) {
+        for (Persona persona : personas.mostrarPersonas()) {
+            if (persona instanceof Cliente) {
+                Cliente cliente = (Cliente) persona;
+                if (cliente.getCarnet() != null && cliente.getCarnet().getId_carnet() == carnet.getId_carnet()) {
+                    return cliente;
+                }
+            }
+        }
+        return null;
+    }
     
+    private Multa buscarMultaPorCliente(Cliente cliente) {
+        for (Multa multa : multas.mostrarMultas()) {
+            if (multa != null && multa.getCliente() != null 
+                && multa.getCliente().getCarnet().getId_carnet() == cliente.getCarnet().getId_carnet()) {
+            return multa;
+            }
+        }
+        return null;
+    }
     
     public void setID(int id){
         this.id_actual = id;
@@ -251,18 +271,15 @@ public class ControladorCliente {
                 JOptionPane.showMessageDialog(ventana7, "Cliente verificado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 Cliente cliente = (Cliente) personas.buscarPersonaPorIdCliente(idCliente);
                 if (cliente != null) {
-                    System.out.println("");
-                    System.out.println(cliente.getNombres());
-                   
+                    Multa multa = buscarMultaPorCliente(cliente);
+                    
                     // Verificar si el cliente tiene deudas
-                    if (cliente.getCarnet() != null && cliente.getCarnet().getMulta() != null) {
-                        String estadoMulta = cliente.getCarnet().getMulta().getEstado();
-                        System.out.println(estadoMulta);
-                        if ("pendiente".equalsIgnoreCase(estadoMulta.trim())) {
-                            //logica para cambiar el estado de la multa
-                        } else {
-                            //lo contrario
-                        }
+                    if (multa != null && multa.getEstado().equals("pendiente")) {
+                        JOptionPane.showMessageDialog(ventana7, "Pago exitoso.", "Boucher", JOptionPane.INFORMATION_MESSAGE);
+                        multa.pagarMulta();
+                        System.out.println(multa.getEstado());
+                        multas.actualizarEstadoMulta("Multas.txt", id, multa.getEstado());
+                        
                     }else{
                          JOptionPane.showMessageDialog(ventana7, "Usted no tiene multa", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -279,24 +296,17 @@ public class ControladorCliente {
     
     private void buscarCarnet() {
         try {
-            int idCarnet = Integer.parseInt(ventana3.IdCarnet1.getText().trim());
-
+            int idCarnet = id_actual;
+            ventana3.IdCarnet1.setText(String.valueOf(idCarnet));
             Carnet carnet = carnets.BuscarCarnet(idCarnet);
             if (carnet != null) {
-                Cliente cliente = (Cliente) personas.buscarPersonaPorIdCarnet(idCarnet);
+                Cliente cliente = buscarClientePorCarnet(carnet);
                 if (cliente != null) {
                     ventana3.ClienteCarnet1.setText(cliente.getNombres() + " " + cliente.getApellidos());
                     ventana3.EstadoCarnet.setText(carnet.getEstado());
-
-
-                    // Verificar si el cliente tiene deudas
-                    if (cliente.getCarnet() != null && cliente.getCarnet().getMulta() != null) {
-                        String estadoMulta = cliente.getCarnet().getMulta().getEstado();
-                        if ("pendiente".equalsIgnoreCase(estadoMulta.trim())) {
-                            ventana3.DeudasClientes.setText("Sí");
-                        } else {
-                            ventana3.DeudasClientes.setText("No");
-                        }
+                    Multa multa = buscarMultaPorCliente(cliente);
+                    if (multa != null && multa.getEstado().equals("pendiente")) {
+                        ventana3.DeudasClientes.setText("Sí");
                     } else {
                         ventana3.DeudasClientes.setText("No");
                     }
