@@ -91,7 +91,16 @@ public class ArregloPersona implements Interface {
         System.arraycopy(this.personas, 0, listaPersonas, 0, indice);
         return listaPersonas;
     }
-
+    public void CambiarCarnetCliente(int id, String estado){
+        for (Persona persona : mostrarPersonas()) {
+            if (persona instanceof Cliente) {
+                Cliente cliente = (Cliente) persona;
+                if (cliente.getCarnet() != null && cliente.getCarnet().getId_carnet() == id) {
+                    cliente.getCarnet().setEstado(estado);
+                }
+            }
+        }
+    }
     public void eliminarClientesDelArreglo() {
         int nuevoIndice = 0;
         for (int i = 0; i < personas.length; i++) {
@@ -104,7 +113,16 @@ public class ArregloPersona implements Interface {
         for (int i = nuevoIndice; i < personas.length; i++) {
             personas[i] = null;
         }
-}
+    }
+    public Cliente buscarPersonaPorIdCliente(String idCliente) {
+        for (int i = 0; i < indice; i++) {
+            if (this.personas[i] instanceof Cliente && this.personas[i].getDNI().equals(idCliente)) {
+                return (Cliente) this.personas[i]; 
+            }
+        }
+        return null; 
+    }
+
     @Override
     public String[] getcabecera() {
         return cabecera;
@@ -329,6 +347,11 @@ public class ArregloPersona implements Interface {
     } catch (IOException e) {
         System.out.println("Error al escribir en el archivo: " + e.getMessage());
     }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

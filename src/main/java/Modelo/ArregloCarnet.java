@@ -7,14 +7,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.chrono.ThaiBuddhistEra;
 
-public class ArregloCarnet implements Interface,Serializable{
+public class ArregloCarnet implements Interface{
     private Carnet[] carnet;
     private int indice, tamaño;
     private String[] cabeceras = {"ID", "ESTADO"};
 
     public ArregloCarnet() {
-        this.tamaño = 30;
+        this.tamaño = 50;
         this.carnet = new Carnet[tamaño];
         this.indice = 0;
     }
@@ -29,14 +30,17 @@ public class ArregloCarnet implements Interface,Serializable{
     }
 
     public boolean Eliminarcarnet(int id) {
-        for (int i = 0; i < this.carnet.length; i++) {
-            if (id >= 0 && id < this.carnet.length && this.carnet[i] != null && this.carnet[i].getId_carnet() == id) {
-                this.carnet[i] = null;
-                return true;
-            }
+    for (int i = 0; i < this.carnet.length; i++) {
+        if (this.carnet[i] != null && this.carnet[i].getId_carnet() == id) {
+            System.out.println("Carnet encontrado: " + this.carnet[i].getId_carnet());
+            this.carnet[i] = null;
+            return true;
         }
-        return false;
     }
+    System.out.println("No se encontró un carnet con ID: " + id);
+    return false;
+}
+
 
     public Carnet BuscarCarnet(int id) {
         for (int i = 0; i < this.carnet.length; i++) {
@@ -93,7 +97,19 @@ public class ArregloCarnet implements Interface,Serializable{
     public Carnet[] getCarnet() {
         return this.carnet;
     }
-
+    public Carnet[] mostrarcarnetsCarnets() {
+        Carnet[] listaCarnets = new Carnet[indice]; 
+        System.arraycopy(this.carnet, 0, listaCarnets, 0, indice); 
+        return listaCarnets; 
+    }
+    
+    public void mostrarcarnet(){
+        Carnet[] todoslosCarnets = mostrarcarnetsCarnets();
+        for(Carnet carnet : todoslosCarnets){
+            System.out.println(carnet.toString());
+        }
+    }
+    
     @Override
     public String[] getcabecera() {
         return cabeceras;
@@ -140,14 +156,6 @@ public class ArregloCarnet implements Interface,Serializable{
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
                 if (partes.length == 9) {
-                    String nombres = partes[0].trim();
-                    String apellidos = partes[1].trim();
-                    int edad = Integer.parseInt(partes[2].trim());
-                    String correoElectronico = partes[3].trim();
-                    String telefono = partes[4].trim();
-                    String dni = partes[5].trim();
-                    String rol = partes[6].trim();
-
                     int idCarnet = Integer.parseInt(partes[7].trim());
                     String estadoCarnet = partes[8].trim();
 
@@ -162,7 +170,40 @@ public class ArregloCarnet implements Interface,Serializable{
         }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
+    public void VincularCarnet(String rutaArchivo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length == 12) {
+                    float monto = Float.parseFloat(partes[0].trim());
+                    String fecha = partes[1].trim();
+                    String Nombres = partes[2].trim();
+                    String Apellido = partes[3].trim();
+                    int edad = Integer.parseInt(partes[4].trim());
+                    String correo = partes[5].trim();
+                    String telefono = partes[6].trim();
+                    String DNI = partes[7].trim();
+                    String rol = partes[8].trim();
+                    int id = Integer.parseInt(partes[9].trim());
+                    String EstadoCarnet = partes[10].trim();
+                    String EstadoMulta = partes[11].trim();
+                    Carnet carnet = new Carnet(id, EstadoCarnet);
+                    Cliente cliente = new Cliente(Nombres, Apellido, edad, correo, telefono, DNI, rol, carnet);
+                    Multa multa =new Multa(monto, cliente, EstadoMulta);
+                    carnet.setMulta(multa);
+                    boolean resultado = Eliminarcarnet(id);
+                    AgregarCarnet(carnet);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer del archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error al convertir datos numéricos: " + e.getMessage());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     @Override
     public void EliminarArchivo(String rutaArchivo) {
        File archivo;
@@ -182,6 +223,11 @@ public class ArregloCarnet implements Interface,Serializable{
 
     @Override
     public void ActualizarArchivo(String rutaArchivo, int id, String nuevoEstado) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

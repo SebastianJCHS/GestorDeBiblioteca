@@ -144,6 +144,7 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana15.setVisible(false);
+                settableLibro();
                 ventana13.setLocationRelativeTo(null);
                 ventana13.setVisible(true);
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -397,9 +398,23 @@ public class ControladorAdmin {
         });
     }
     
+    private void vincularCarnetsYMultas() {
+        for (Multa multa : multas.mostrarMultas()) {
+            if (multa != null && multa.getCliente() != null) {
+                int idCarnet = multa.getCliente().getCarnet().getId_carnet();
+                Carnet carnet = carnets.BuscarCarnet(idCarnet);
+                if (carnet != null) {
+                    carnet.setMulta(multa); // Vincula la multa al carnet
+                    multa.getCliente().setCarnet(carnet); // Vincula el carnet al cliente
+                }
+            }
+        }
+    }
+    
     public void recargarDatos(){
         personas.cargarClientesDesdeArchivo("Clientes.txt");
         multas.cargarArchivo("Multas.txt");
+        vincularCarnetsYMultas();
     }
     
     public void settable(){
@@ -426,10 +441,12 @@ public class ControladorAdmin {
                     cliente.getCarnet().getEstado()
                 };
 
+            // Agregar la fila al modelo de la tabla
             modelo.addRow(fila);
             }
         }
     }
+    
     
     public void settableLibro(){
         String[] cabeceras = libros.getcabecera();
@@ -444,33 +461,23 @@ public class ControladorAdmin {
         this.ventana4.TablaMulta.setModel(modelotabla);
     }
     private void actualizarTablaMultas() {
-        // Obtener el modelo de la tabla
         DefaultTableModel modelo = (DefaultTableModel) ventana4.TablaMulta.getModel();
-
-        // Limpiar las filas existentes en el modelo
         modelo.setRowCount(0);
-
-        // Obtener las multas desde el método mostrarMultas()
         Multa[] todasLasMultas = multas.mostrarMultas();
-
-        // Recorrer el arreglo de multas
         for (Multa multa : todasLasMultas) {
-            if (multa != null) { // Asegurarse de que no sea nulo
-                // Crear una fila con los datos relevantes de la multa
+            if (multa != null) { 
                 Object[] fila = {
-                    multa.getMonto(),         // Monto de la multa
-                    multa.getFecha(),         // Fecha de la multa
-                    multa.getCliente().getNombres() + " " + multa.getCliente().getApellidos(), // Nombre del cliente
-                    multa.getEstado()         // Estado de la multa (e.g., "pendiente", "pagada")
+                    multa.getMonto(),
+                    multa.getFecha(), 
+                    multa.getCliente().getNombres() + " " + multa.getCliente().getApellidos(), 
+                    multa.getEstado()
                 };
-
-                // Agregar la fila al modelo de la tabla
                 modelo.addRow(fila);
             }
         }
     }
 
-    public void iniciar(){
+ public void iniciar(){
         ventana1.setLocationRelativeTo(null);
         ventana1.setVisible(true);
     }
@@ -488,6 +495,7 @@ public class ControladorAdmin {
                     carnet.setMulta(nuevaMulta);
                     multas.guardarArchivo("Multas.txt");                   
                     settableMulta();
+                    actualizarTablaMultas();
                     JOptionPane.showMessageDialog(ventana6, "Multa añadida correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(ventana6, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -565,6 +573,7 @@ public class ControladorAdmin {
             personas.agregarPersona(nuevoCliente);
             personas.guardarClientesEnArchivo("Clientes.txt");
             settable();
+            actualizarTabla();
             JOptionPane.showMessageDialog(ventana12, "Carnet registrado correctamente para " + nombres + " " + apellidos, "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCamposCarnet();
         } catch (NumberFormatException ex) {
@@ -577,14 +586,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             Carnet carnet = carnets.BuscarCarnet(id);
-
             if (carnet != null) {
+                ventana8.EstadoCarnet.setText(carnet.getEstado());
                 Cliente cliente = buscarClientePorCarnet(carnet);
                 if (cliente != null) {
                     ventana8.ClienteCarnet1.setText(cliente.getNombres() + " " + cliente.getApellidos());
-                    Multa multa = multas.BuscarMulta(cliente);
+                    Multa multa = buscarMultaPorCliente(cliente);
                     if (multa != null && multa.getEstado().equals("pendiente")) {
-                        ventana8.DeudasClientes.setText("Sí, pendiente: " + multa.getMonto() + "$.");
+                       ventana8.DeudasClientes.setText("Sí, pendiente: " + multa.getMonto() + "$.");
                     } else {
                         ventana8.DeudasClientes.setText("No");
                     }
@@ -592,7 +601,6 @@ public class ControladorAdmin {
                     ventana8.ClienteCarnet1.setText("Cliente no encontrado");
                     ventana8.DeudasClientes.setText("No aplica");
                 }
-                ventana8.EstadoCarnet.setText(carnet.getEstado());
                 JOptionPane.showMessageDialog(ventana8, "Carnet encontrado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(ventana8, "Carnet no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -613,19 +621,28 @@ public class ControladorAdmin {
         }
         return null;
     }
-    
+    private Multa buscarMultaPorCliente(Cliente cliente) {
+        for (Multa multa : multas.mostrarMultas()) {
+            if (multa != null && multa.getCliente() != null 
+                && multa.getCliente().getCarnet().getId_carnet() == cliente.getCarnet().getId_carnet()) {
+            return multa;
+            }
+        }
+        return null;
+    }
+
     private void bloquearCarnet() {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarBloqueado(id);
-
             if (resultado) {
+                personas.CambiarCarnetCliente(id, "bloqueado");
                 ventana8.EstadoCarnet.setText("bloqueado");
-                personas.eliminarClientesDelArreglo();
-                multas.eliminarMultasArreglo();
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "bloqueado");
                 multas.ActualizarArchivo("Multas.txt", id, "bloqueado");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet bloqueado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -641,14 +658,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarInactivo(id);
-
             if (resultado) {
+                personas.CambiarCarnetCliente(id, "inactivo");
                 ventana8.EstadoCarnet.setText("inactivo");
-                personas.eliminarClientesDelArreglo();
-                multas.eliminarMultasArreglo();
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "inactivo");
                 multas.ActualizarArchivo("Multas.txt", id, "inactivo");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet desactivado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -664,14 +681,14 @@ public class ControladorAdmin {
         try {
             int id = Integer.parseInt(ventana8.IdCarnet1.getText().trim());
             boolean resultado = carnets.CambiarActivo(id);
-
             if (resultado) {
+                personas.CambiarCarnetCliente(id, "activo");
                 ventana8.EstadoCarnet.setText("activo");
-                personas.eliminarClientesDelArreglo();
-                multas.eliminarMultasArreglo();
+                //personas.eliminarClientesDelArreglo();
+                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "activo");
                 multas.ActualizarArchivo("Multas.txt", id, "activo");
-                recargarDatos();
+                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet activado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

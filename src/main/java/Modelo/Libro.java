@@ -132,7 +132,7 @@ public class Libro {
     public void mostrarLibroyEjemplares (){
         System.out.println("Libro{ "+ "nombre=" + nombre + ", autor=" + autor + ", editorial=" + editorial + ", genero=" + genero +", fechaPublicacion=" + fechaPublicacion);
         for (Ejemplar ejemplare : ejemplares) {
-            System.out.println(ejemplare);
+            System.out.println(ejemplare.toString());
         }
     }
     

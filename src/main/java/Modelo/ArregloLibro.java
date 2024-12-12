@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class ArregloLibro implements Interface {
@@ -116,13 +118,17 @@ public class ArregloLibro implements Interface {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (int i = 0; i < this.indice; i++) {  // Solo guardamos los libros hasta el índice actual
                 if (this.libros[i] != null) {
-                    writer.write(this.libros[i].getNombre() + "," +
+                    for(int j = 0; j< this.libros[i].getNrjemeplares(); j++){
+                        writer.write(this.libros[i].getNombre() + "," +
                             this.libros[i].getAutor() + "," +
                             this.libros[i].getEditorial() + "," +
                             this.libros[i].getGenero() + "," +
                             this.libros[i].getFechaPublicacion() + "," +
-                            this.libros[i].getNrjemeplares());
-                    writer.newLine();
+                            this.libros[i].getNrjemeplares() + "," +
+                            this.libros[i].getEjemplares()[j].getID_Ejemplar()+ "," +
+                            this.libros[i].getEjemplares()[j].getEstado());
+                        writer.newLine();
+                    }
                 }
             }
         } catch (IOException e) {
@@ -132,24 +138,40 @@ public class ArregloLibro implements Interface {
 
     @Override
     public void cargarArchivo(String rutaArchivo) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                String[] partes = linea.split(",");
-                if (partes.length == 6) {  // Asegúrate de tener 6 partes para un libro válido
-                    String nombre = partes[0].trim();
-                    String autor = partes[1].trim();
-                    String editorial = partes[2].trim();
-                    String genero = partes[3].trim();
-                    String fechaPublicacion = partes[4].trim();
-                    int nroEjemplares = Integer.parseInt(partes[5].trim());
+       try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+        String linea;
+        Map<String, Libro> librosTemporales = new HashMap<>(); // Para asociar libros a sus ejemplares
 
-                    Libro libro = new Libro(nombre, autor, editorial, genero, fechaPublicacion, nroEjemplares);
-                    agregarLibro(libro);
+        while ((linea = reader.readLine()) != null) {
+            String[] partes = linea.split(",");
+            if (partes.length == 8) { // Ahora esperamos 8 campos: libro + ejemplar
+                String nombre = partes[0].trim();
+                String autor = partes[1].trim();
+                String editorial = partes[2].trim();
+                String genero = partes[3].trim();
+                String fechaPublicacion = partes[4].trim();
+                int nroEjemplares = Integer.parseInt(partes[5].trim());
+                int idEjemplar = Integer.parseInt(partes[6].trim());
+                String estadoEjemplar = partes[7].trim();
+
+                Libro libro = librosTemporales.get(nombre);
+                if (libro == null) {
+                    // Si el libro no está registrado, creamos uno nuevo
+                    libro = new Libro(nombre, autor, editorial, genero, fechaPublicacion, nroEjemplares);
+                    librosTemporales.put(nombre, libro);
+                }
+                // Vinculamos el ejemplar con el libro
+                Ejemplar[] ejemplares = libro.getEjemplares();
+                if (idEjemplar > 0 && idEjemplar <= ejemplares.length) {
+                    ejemplares[idEjemplar - 1] = new Ejemplar(idEjemplar, estadoEjemplar);
                 }
             }
+        }
+        for (Libro libro : librosTemporales.values()) {
+            agregarLibro(libro);
+        }
         } catch (IOException | NumberFormatException e) {
-            System.out.println("Error al cargar desde el archivo: " + e.getMessage());
+        System.out.println("Error al cargar desde el archivo: " + e.getMessage());
         }
     }
 
@@ -197,5 +219,10 @@ public class ArregloLibro implements Interface {
         }
     }
         JOptionPane.showMessageDialog(null, "Libro no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

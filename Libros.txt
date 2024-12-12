@@ -1,2 +1,27 @@
-Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5
-Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11
+Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,1,Disponible
+Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,2,Disponible
+Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,3,Disponible
+Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,4,Disponible
+Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,5,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,1,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,2,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,3,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,4,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,5,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,6,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,7,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,8,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,9,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,10,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,11,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,1,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,2,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,3,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,4,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,5,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,6,Disponible
+La conquista,Gabriel,Editorial Limbo,fantasia,2024,5,1,Disponible
+La conquista,Gabriel,Editorial Limbo,fantasia,2024,5,2,Disponible
+La conquista,Gabriel,Editorial Limbo,fantasia,2024,5,3,Disponible
+La conquista,Gabriel,Editorial Limbo,fantasia,2024,5,4,Disponible
+La conquista,Gabriel,Editorial Limbo,fantasia,2024,5,5,Disponible
