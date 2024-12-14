@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -8,14 +11,16 @@ public class PrestacionLibro {
     private String fechaDevolucion;
     private Cliente cliente;
     private Libro libro;
-    private Multa multa;
+    private Ejemplar ejemplar;
+    private String estado;
 
-    public PrestacionLibro(String fechaPrestamo, String fechaDevolucion,Libro libro, Cliente cliente) {
+    public PrestacionLibro(String fechaPrestamo, String fechaDevolucion, Libro libro, Cliente cliente, Ejemplar ejemplar) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
-        this.libro=libro;
+        this.libro = libro;
         this.cliente = cliente;
-        this.multa = null;
+        this.ejemplar = ejemplar;
+        this.estado = "prestado";
     }
 
     public PrestacionLibro() {
@@ -35,37 +40,37 @@ public class PrestacionLibro {
         }
     }
 
-    public void generarMulta() {
-        if (estaPendiente() && multa == null) {
-            float montoMulta = calcularMontoMulta();
-            this.multa = new Multa(montoMulta, cliente, "pendiente");
+    public boolean solicitarPrestamo() {
+        if (ejemplar.getEstado().equalsIgnoreCase("disponible")) {
+            ejemplar.setEstado("prestado");
+            return true;
+        }
+        return false;
+    }
+
+    public void guardarPrestamoEnArchivo(String rutaArchivo) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            writer.write(cliente.getNombres() + "," +
+                         cliente.getApellidos() + "," +
+                         cliente.getDNI() + "," +
+                         libro.getNombre() + "," +
+                         ejemplar.getID_Ejemplar() + "," +
+                         fechaPrestamo + "," +
+                         fechaDevolucion + "," +
+                         estado);
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("Error al guardar el préstamo en el archivo: " + e.getMessage());
         }
     }
 
-    private float calcularMontoMulta() {
-        LocalDate fechaDevol = LocalDate.parse(fechaDevolucion, DateTimeFormatter.ISO_DATE);
-        LocalDate fechaActual = LocalDate.now();
-        long diasRetraso = fechaActual.toEpochDay() - fechaDevol.toEpochDay();
-        return diasRetraso * 10.0f;
-    }
-
-    public boolean solicitarPrestamo() {
-            boolean result=false;
-            if (libro.hayEjemplaresDisponibles()) {
-                // Cambiar el estado de un ejemplar a "Prestado"
-                libro.cambiarEstadoEjemplarDisponibleAPrestado();
-                result= true; // Préstamo exitoso
-            } 
-            return result;
-    }
-    
-    public void mostrarPrestacion (){
-        System.out.println(cliente);
-        libro.mostrarLibroyEjemplares();
-    }
-
-    public Multa getMulta() {
-        return multa;
+    public void mostrarPrestacion() {
+        System.out.println("Cliente: " + cliente.getNombres() + " " + cliente.getApellidos());
+        System.out.println("Libro: " + libro.getNombre());
+        System.out.println("Ejemplar: " + ejemplar.getID_Ejemplar());
+        System.out.println("Fecha de Préstamo: " + fechaPrestamo);
+        System.out.println("Fecha de Devolución: " + fechaDevolucion);
+        System.out.println("Estado: " + estado);
     }
 
     public String getFechaPrestamo() {
@@ -91,6 +96,20 @@ public class PrestacionLibro {
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
-    
-    
+
+    public Ejemplar getEjemplar() {
+        return ejemplar;
+    }
+
+    public void setEjemplar(Ejemplar ejemplar) {
+        this.ejemplar = ejemplar;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }
