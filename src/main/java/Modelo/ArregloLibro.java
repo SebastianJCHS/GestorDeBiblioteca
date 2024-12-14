@@ -93,11 +93,8 @@ public class ArregloLibro implements Interface {
 
     @Override
     public Object[][] getDatos() {
-        // Tomamos solo los libros que han sido añadidos (hasta el índice actual)
         Object[][] resultado = new Object[this.indice][6];
         int fila = 0;
-
-        // Llenamos la matriz de datos
         for (int i = 0; i < this.indice; i++) {
             Libro libro = this.libros[i];
             if (libro != null) {
@@ -140,11 +137,10 @@ public class ArregloLibro implements Interface {
     public void cargarArchivo(String rutaArchivo) {
        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
         String linea;
-        Map<String, Libro> librosTemporales = new HashMap<>(); // Para asociar libros a sus ejemplares
-
+        Map<String, Libro> librosTemporales = new HashMap<>(); 
         while ((linea = reader.readLine()) != null) {
             String[] partes = linea.split(",");
-            if (partes.length == 8) { // Ahora esperamos 8 campos: libro + ejemplar
+            if (partes.length == 8) { 
                 String nombre = partes[0].trim();
                 String autor = partes[1].trim();
                 String editorial = partes[2].trim();
@@ -156,11 +152,9 @@ public class ArregloLibro implements Interface {
 
                 Libro libro = librosTemporales.get(nombre);
                 if (libro == null) {
-                    // Si el libro no está registrado, creamos uno nuevo
                     libro = new Libro(nombre, autor, editorial, genero, fechaPublicacion, nroEjemplares);
                     librosTemporales.put(nombre, libro);
                 }
-                // Vinculamos el ejemplar con el libro
                 Ejemplar[] ejemplares = libro.getEjemplares();
                 if (idEjemplar > 0 && idEjemplar <= ejemplares.length) {
                     ejemplares[idEjemplar - 1] = new Ejemplar(idEjemplar, estadoEjemplar);
@@ -192,20 +186,14 @@ public class ArregloLibro implements Interface {
 
     @Override
     public void ActualizarArchivo(String rutaArchivo, int id, String nuevoEstado) {
-        // Implementar la lógica para actualizar el archivo si es necesario
     }
     
     public void eliminarEjemplarDeLibro(String nombreLibro) {
     for (int i = 0; i < this.libros.length; i++) {
         if (this.libros[i] != null && this.libros[i].getNombre().equalsIgnoreCase(nombreLibro)) {
-            // Si el libro tiene ejemplares disponibles, disminuir el número de ejemplares
             if (this.libros[i].getNrjemeplares() > 0) {
-                // Disminuir el número de ejemplares
                 this.libros[i].setNrjemeplares(this.libros[i].getNrjemeplares() - 1);
-                // Eliminar el último ejemplar (asumimos que es el último en el arreglo de ejemplares)
                 this.libros[i].getEjemplares()[this.libros[i].getNrjemeplares()] = null;
-                
-                // Si el número de ejemplares llega a 0, eliminar el libro de la lista
                 if (this.libros[i].getNrjemeplares() == 0) {
                     this.libros[i] = null;
                     JOptionPane.showMessageDialog(null, "El libro ha sido eliminado porque no quedan ejemplares.", "Libro Eliminado", JOptionPane.INFORMATION_MESSAGE);

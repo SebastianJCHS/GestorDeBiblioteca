@@ -55,6 +55,7 @@ public class RegistroMulta extends javax.swing.JFrame {
 
         btnregresoInicio.setBackground(new java.awt.Color(0, 51, 51));
         btnregresoInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnregresoInicio.setForeground(new java.awt.Color(255, 255, 255));
         btnregresoInicio.setText("Atras");
         btnregresoInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

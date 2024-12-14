@@ -19,6 +19,7 @@ import vista.VentanaPrestamoLibro;
 import vista.VentanaRegistroCarnet;
 import vista.VentanaRegistroLibros;
 import vista.VentanaVerificarLibro;
+import vista.VentanaBuscarLibroAdmin;
 import Modelo.Administrador;
 import Modelo.ArregloCarnet;
 import Modelo.ArregloLibro;
@@ -55,6 +56,7 @@ public class ControladorAdmin {
     private MenuAdmin ventana15;
     private VentanaEliminarLibro ventana16;
     private VentanaModificarLibro ventana17;
+    private VentanaBuscarLibroAdmin ventana18;
     private ArregloPersona personas;
     private ArregloCarnet carnets;
     private ArregloLibro libros;
@@ -66,7 +68,7 @@ public class ControladorAdmin {
     private Multa multa;
     private PrestacionLibro prestamo;
 
-    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, VentanaEliminarLibro ventana16, VentanaModificarLibro ventana17, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
+    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, VentanaEliminarLibro ventana16, VentanaModificarLibro ventana17, VentanaBuscarLibroAdmin ventana18, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
         this.ventana1 = ventana1;
         this.ventana2 = ventana2;
         this.ventana4 = ventana4;
@@ -80,6 +82,7 @@ public class ControladorAdmin {
         this.ventana15 = ventana15;
         this.ventana16 = ventana16;
         this.ventana17 = ventana17;
+        this.ventana18 = ventana18;
         this.personas = personas;
         this.carnets = carnets;
         this.libros = libros;
@@ -154,8 +157,10 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana15.setVisible(false);
-                ventana14.setLocationRelativeTo(null);
-                ventana14.setVisible(true);
+                ventana18.setLocationRelativeTo(null);
+                ventana18.setVisible(true);
+                limpiarBuscarLibro();
+                settableBuscarLibro();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -396,6 +401,28 @@ public class ControladorAdmin {
             modificarLibro();
             }
         });
+        this.ventana18.btnregresoInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana18.setVisible(false);
+                ventana15.setLocationRelativeTo(null);
+                ventana15.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana18.btnbuscarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarLibroPorNombre();
+                limpiarBuscarLibro();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+    }
+    
+    public void iniciar(){
+        ventana1.setLocationRelativeTo(null);
+        ventana1.setVisible(true);
     }
     
     private void vincularCarnetsYMultas() {
@@ -404,18 +431,13 @@ public class ControladorAdmin {
                 int idCarnet = multa.getCliente().getCarnet().getId_carnet();
                 Carnet carnet = carnets.BuscarCarnet(idCarnet);
                 if (carnet != null) {
-                    carnet.setMulta(multa); // Vincula la multa al carnet
-                    multa.getCliente().setCarnet(carnet); // Vincula el carnet al cliente
+                    carnet.setMulta(multa);
+                    multa.getCliente().setCarnet(carnet);
                 }
             }
         }
     }
     
-    public void recargarDatos(){
-        personas.cargarClientesDesdeArchivo("Clientes.txt");
-        multas.cargarArchivo("Multas.txt");
-        vincularCarnetsYMultas();
-    }
     
     public void settable(){
         String[] cabeceras = personas.getcabecera();
@@ -440,8 +462,6 @@ public class ControladorAdmin {
                     cliente.getCarnet().getId_carnet(),
                     cliente.getCarnet().getEstado()
                 };
-
-            // Agregar la fila al modelo de la tabla
             modelo.addRow(fila);
             }
         }
@@ -477,10 +497,49 @@ public class ControladorAdmin {
         }
     }
 
- public void iniciar(){
-        ventana1.setLocationRelativeTo(null);
-        ventana1.setVisible(true);
+    public void settableBuscarLibro(){
+        String[] cabeceras = {"Nombre", "Autor", "Editorial", "Genero", "Fecha de Publicacion", "Ejemplar", "Estado"};
+        DefaultTableModel modelotabla = new DefaultTableModel(cabeceras,0);
+        this.ventana18.TablaResultados.setModel(modelotabla);
     }
+    
+    private void buscarLibroPorNombre() {
+    try {
+        String nombreLibro = ventana18.NombreLibroBuscar.getText().trim();
+
+        if (nombreLibro.isEmpty()) {
+            JOptionPane.showMessageDialog(ventana18, "Por favor, ingrese el nombre del libro.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Libro libroEncontrado = libros.buscarLibroPorNombre(nombreLibro);
+
+        if (libroEncontrado != null) {
+            DefaultTableModel modelo = (DefaultTableModel) ventana18.TablaResultados.getModel();
+            modelo.setRowCount(0); 
+            for (Ejemplar ejemplar : libroEncontrado.getEjemplares()) {
+                if (ejemplar != null) {
+                    Object[] fila = {
+                        libroEncontrado.getNombre(),
+                        libroEncontrado.getAutor(),
+                        libroEncontrado.getEditorial(),
+                        libroEncontrado.getGenero(),
+                        libroEncontrado.getFechaPublicacion(),
+                        ejemplar.getID_Ejemplar(),
+                        ejemplar.getEstado()
+                    };
+                    modelo.addRow(fila);
+                }
+            }
+
+            JOptionPane.showMessageDialog(ventana18, "Libro encontrado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(ventana18, "No se encontró el libro con el nombre especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(ventana18, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}    
     
     private void añadirMulta() {
         try {
@@ -496,6 +555,7 @@ public class ControladorAdmin {
                     multas.guardarArchivo("Multas.txt");                   
                     settableMulta();
                     actualizarTablaMultas();
+                    vincularCarnetsYMultas();
                     JOptionPane.showMessageDialog(ventana6, "Multa añadida correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(ventana6, "Cliente no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -638,11 +698,8 @@ public class ControladorAdmin {
             if (resultado) {
                 personas.CambiarCarnetCliente(id, "bloqueado");
                 ventana8.EstadoCarnet.setText("bloqueado");
-                //personas.eliminarClientesDelArreglo();
-                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "bloqueado");
                 multas.ActualizarArchivo("Multas.txt", id, "bloqueado");
-                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet bloqueado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -661,11 +718,8 @@ public class ControladorAdmin {
             if (resultado) {
                 personas.CambiarCarnetCliente(id, "inactivo");
                 ventana8.EstadoCarnet.setText("inactivo");
-                //personas.eliminarClientesDelArreglo();
-                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "inactivo");
                 multas.ActualizarArchivo("Multas.txt", id, "inactivo");
-                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet desactivado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -684,11 +738,8 @@ public class ControladorAdmin {
             if (resultado) {
                 personas.CambiarCarnetCliente(id, "activo");
                 ventana8.EstadoCarnet.setText("activo");
-                //personas.eliminarClientesDelArreglo();
-                //multas.eliminarMultasArreglo();
                 personas.ActualizarArchivo("Clientes.txt", id, "activo");
                 multas.ActualizarArchivo("Multas.txt", id, "activo");
-                //recargarDatos();
                 actualizarTabla();
                 actualizarTablaMultas();
                 JOptionPane.showMessageDialog(ventana8, "Carnet activado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -851,5 +902,8 @@ public class ControladorAdmin {
         ventana17.GeneroLibroModificar.setText("");
         ventana17.PublicacionLibroModificar.setText("");
         ventana17.NEjemplaresLibroModificar.setText("");
+    }
+    private void limpiarBuscarLibro(){
+        ventana18.NombreLibroBuscar.setText("");
     }
 }

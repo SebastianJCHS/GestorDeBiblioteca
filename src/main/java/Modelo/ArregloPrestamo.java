@@ -40,7 +40,7 @@ public class ArregloPrestamo {
 
     public void mostrarPrestamos(){
         for (PrestacionLibro prestacionLibro : Prestamo) {
-            if (prestacionLibro != null) {  // Verificar si el elemento no es null
+            if (prestacionLibro != null) {
                 System.out.println("");
                 prestacionLibro.mostrarPrestacion();
             }

@@ -138,6 +138,7 @@ public class ControladorCliente {
                 ventana1.setVisible(false);
                 ventana8.setLocationRelativeTo(null);
                 ventana8.setVisible(true);
+                limpiarBuscarLibro();
                 settableLibro();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
@@ -223,6 +224,7 @@ public class ControladorCliente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarLibroPorNombre();
+                limpiarBuscarLibro();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -446,5 +448,9 @@ public class ControladorCliente {
     }*/
     private void limpiardatosInicio(){
         ventana2.IdInicioSesionCliente.setText("");
+    }
+    
+    private void limpiarBuscarLibro(){
+        ventana8.NombreLibroBuscar.setText("");
     }
 }

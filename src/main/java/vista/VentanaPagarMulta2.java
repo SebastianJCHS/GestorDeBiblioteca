@@ -38,12 +38,22 @@ public class VentanaPagarMulta2 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         btnVolverPagarMulta.setBackground(new java.awt.Color(0, 102, 102));
-        btnVolverPagarMulta.setText("volver");
+        btnVolverPagarMulta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVolverPagarMulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolverPagarMulta.setText("Atras");
+        btnVolverPagarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverPagarMultaActionPerformed(evt);
+            }
+        });
 
         btnPagar.setBackground(new java.awt.Color(0, 102, 102));
         btnPagar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnPagar.setForeground(new java.awt.Color(255, 255, 255));
         btnPagar.setText("PAGAR");
 
+        TextPagarMulta.setBackground(new java.awt.Color(255, 255, 255));
+        TextPagarMulta.setForeground(new java.awt.Color(0, 0, 0));
         TextPagarMulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextPagarMultaActionPerformed(evt);
@@ -51,9 +61,11 @@ public class VentanaPagarMulta2 extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Pagar Multas");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese su ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -111,6 +123,10 @@ public class VentanaPagarMulta2 extends javax.swing.JFrame {
     private void TextPagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPagarMultaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextPagarMultaActionPerformed
+
+    private void btnVolverPagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPagarMultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverPagarMultaActionPerformed
 
     /**
      * @param args the command line arguments

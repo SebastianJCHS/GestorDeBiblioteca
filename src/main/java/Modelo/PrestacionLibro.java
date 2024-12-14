@@ -52,9 +52,8 @@ public class PrestacionLibro {
     public boolean solicitarPrestamo() {
             boolean result=false;
             if (libro.hayEjemplaresDisponibles()) {
-                // Cambiar el estado de un ejemplar a "Prestado"
                 libro.cambiarEstadoEjemplarDisponibleAPrestado();
-                result= true; // Préstamo exitoso
+                result= true; 
             } 
             return result;
     }

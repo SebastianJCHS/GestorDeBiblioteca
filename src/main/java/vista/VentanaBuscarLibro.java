@@ -41,7 +41,9 @@ public class VentanaBuscarLibro extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Buscar Libro");
 
         TablaResultados.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,6 +61,7 @@ public class VentanaBuscarLibro extends javax.swing.JFrame {
 
         btnregresoInicio.setBackground(new java.awt.Color(0, 51, 51));
         btnregresoInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnregresoInicio.setForeground(new java.awt.Color(255, 255, 255));
         btnregresoInicio.setText("Atras");
         btnregresoInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +69,8 @@ public class VentanaBuscarLibro extends javax.swing.JFrame {
             }
         });
 
+        NombreLibroBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        NombreLibroBuscar.setForeground(new java.awt.Color(0, 0, 0));
         NombreLibroBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreLibroBuscarActionPerformed(evt);
@@ -73,10 +78,12 @@ public class VentanaBuscarLibro extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Título seleccionado:");
 
         btnbuscarLibro.setBackground(new java.awt.Color(0, 51, 51));
         btnbuscarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnbuscarLibro.setForeground(new java.awt.Color(255, 255, 255));
         btnbuscarLibro.setText("Buscar");
         btnbuscarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

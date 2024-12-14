@@ -193,20 +193,16 @@ public class ArregloMulta implements Interface {
             File archivo = new File("Multas.txt");
             BufferedReader lector = new BufferedReader(new FileReader(archivo));
             String linea;
-
-        // Lee línea por línea el archivo de multas
             while ((linea = lector.readLine()) != null) {
-                String[] datos = linea.split(","); // Dividir la línea en partes (ajusta índices según el archivo)
+                String[] datos = linea.split(","); 
 
-                int idMultaCarnet = Integer.parseInt(datos[9].trim()); // El ID del carnet (ajusta índice si es necesario)
-
-            // Si el ID coincide con el cliente, cargar solo los datos necesarios
+                int idMultaCarnet = Integer.parseInt(datos[9].trim());
                 if (idMultaCarnet == idCarnet) {
                     Object[] fila = {
-                        datos[0], // Monto de la multa
-                        datos[1], // Fecha de la multa
-                        datos[2] + " " + datos[3], // Nombre completo del cliente (nombre + apellido)
-                        datos[11]  // Estado de la multa
+                        datos[0], 
+                        datos[1], 
+                        datos[2] + " " + datos[3], 
+                        datos[11]  
                     };
                     return fila;
                 }
@@ -232,13 +228,12 @@ public class ArregloMulta implements Interface {
 
         while ((linea = reader.readLine()) != null) {
             String[] partes = linea.split(",");
-            
-            // Identificar la línea del carnet
+
             if (partes.length >= 12 && partes[9].equals(String.valueOf(id))) {
-                partes[10] = nuevoEstado; // Actualizar el estado
+                partes[10] = nuevoEstado; 
                 linea = String.join(",", partes);
             }
-            lineasActualizadas.add(linea); // Guardar la línea modificada o sin cambios
+            lineasActualizadas.add(linea); 
         }
     } catch (IOException e) {
         System.out.println("Error al leer el archivo: " + e.getMessage());
@@ -267,12 +262,11 @@ public class ArregloMulta implements Interface {
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
 
-                // Identificar la línea del carnet
                 if (partes.length >= 12 && partes[9].equals(String.valueOf(id))) {
-                    partes[11] = nuevoEstadoMulta; // Actualizar el estado
+                    partes[11] = nuevoEstadoMulta; 
                     linea = String.join(",", partes);
                 }
-                lineasActualizadas.add(linea); // Guardar la línea modificada o sin cambios
+                lineasActualizadas.add(linea); 
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());

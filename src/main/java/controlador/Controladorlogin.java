@@ -21,7 +21,7 @@ public class Controladorlogin {
                 vista2.setVisible(false);
                 vista1.setLocationRelativeTo(null);
                 vista1.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.vista2.btnCliente.addActionListener(new ActionListener() {
@@ -30,7 +30,7 @@ public class Controladorlogin {
                 vista2.setVisible(false);
                 vista3.setLocationRelativeTo(null);
                 vista3.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         

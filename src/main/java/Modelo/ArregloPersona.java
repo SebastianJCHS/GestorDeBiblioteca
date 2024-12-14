@@ -101,19 +101,7 @@ public class ArregloPersona implements Interface {
             }
         }
     }
-    public void eliminarClientesDelArreglo() {
-        int nuevoIndice = 0;
-        for (int i = 0; i < personas.length; i++) {
-            if (!(personas[i] instanceof Cliente)) { // Mantener las personas que no sean clientes
-                personas[nuevoIndice] = personas[i];
-                nuevoIndice++;
-            }
-        }
-        // Llenar el resto del arreglo con null para evitar referencias antiguas
-        for (int i = nuevoIndice; i < personas.length; i++) {
-            personas[i] = null;
-        }
-    }
+    
     public Cliente buscarPersonaPorIdCliente(String idCliente) {
         for (int i = 0; i < indice; i++) {
             if (this.personas[i] instanceof Cliente && this.personas[i].getDNI().equals(idCliente)) {
@@ -158,7 +146,6 @@ public class ArregloPersona implements Interface {
     int fila = 0;
     for (Persona persona : this.personas) {
         if (persona instanceof Cliente cliente) {
-            // Datos del cliente
             resultado[fila][0] = cliente.getNombres();
             resultado[fila][1] = cliente.getApellidos();
             resultado[fila][2] = cliente.getEdad();
@@ -185,7 +172,6 @@ public class ArregloPersona implements Interface {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Persona persona : this.personas) {
                 if (persona instanceof Cliente cliente) {
-                // Guardar datos del cliente
                 writer.write(cliente.getNombres() + "," +
                              cliente.getApellidos() + "," +
                              cliente.getEdad() + "," +
@@ -193,15 +179,13 @@ public class ArregloPersona implements Interface {
                              cliente.getTelefono() + "," +
                              cliente.getDNI() + "," +
                              cliente.getRol() + ",");
-
-                // Guardar datos del carnet asociado
                 Carnet carnet = cliente.getCarnet();
                 if (carnet != null) {
                     writer.write(carnet.getId_carnet() + "," + carnet.getEstado());
                 } else {
                     writer.write("Sin ID,Sin estado");
                 }
-                writer.newLine(); // Salto de línea para el siguiente cliente
+                writer.newLine(); 
             }
         }
     } catch (IOException e) {
@@ -215,10 +199,7 @@ public class ArregloPersona implements Interface {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-
-                // Validar si la línea tiene los campos esperados
                 if (partes.length == 9) {
-                    // Crear un nuevo objeto Cliente a partir de los datos del archivo
                     String nombres = partes[0].trim();
                     String apellidos = partes[1].trim();
                     int edad = Integer.parseInt(partes[2].trim());
@@ -233,7 +214,6 @@ public class ArregloPersona implements Interface {
                     Carnet carnet = new Carnet(idCarnet, estadoCarnet);
                     Cliente cliente = new Cliente(nombres, apellidos, edad, correoElectronico, telefono, dni, rol, carnet);
 
-                // Agregar el cliente al arreglo de personas
                 agregarPersona(cliente);
             }
         }
@@ -249,7 +229,6 @@ public class ArregloPersona implements Interface {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Persona persona : this.personas) {
                 if (persona instanceof Administrador administrador) {
-                // Guardar datos del cliente
                 writer.write(administrador.getID_admin() + "," +
                              administrador.getNombres() + "," +
                              administrador.getApellidos() + "," +
@@ -258,7 +237,7 @@ public class ArregloPersona implements Interface {
                              administrador.getTelefono() + "," +
                              administrador.getRol() + "," +
                              administrador.getID_admin());
-                writer.newLine(); // Salto de línea para el siguiente cliente
+                writer.newLine(); 
                 }
             }
         } catch (IOException e) {
@@ -273,10 +252,7 @@ public class ArregloPersona implements Interface {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-
-                // Validar si la línea tiene los campos esperados
                 if (partes.length == 8) {
-                    // Crear un nuevo objeto Cliente a partir de los datos del archivo
                     String id = partes[0].trim();
                     String nombres = partes[1].trim();
                     String apellidos = partes[2].trim();
@@ -287,7 +263,6 @@ public class ArregloPersona implements Interface {
                     String rol = partes[7].trim();
 
                     Administrador administrador = new Administrador(id,nombres, apellidos, edad, correoElectronico, Telefono, dni, rol);
-                // Agregar el cliente al arreglo de personas
                 agregarPersona(administrador);
                 }
             }
@@ -326,13 +301,11 @@ public class ArregloPersona implements Interface {
 
         while ((linea = reader.readLine()) != null) {
             String[] partes = linea.split(",");
-            
-            // Identificar la línea del carnet
             if (partes.length >= 9 && partes[7].equals(String.valueOf(id))) {
-                partes[8] = nuevoEstado; // Actualizar el estado
+                partes[8] = nuevoEstado; 
                 linea = String.join(",", partes);
             }
-            lineasActualizadas.add(linea); // Guardar la línea modificada o sin cambios
+            lineasActualizadas.add(linea);
         }
     } catch (IOException e) {
         System.out.println("Error al leer el archivo: " + e.getMessage());

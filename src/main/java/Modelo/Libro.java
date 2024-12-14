@@ -114,17 +114,17 @@ public class Libro {
     public boolean hayEjemplaresDisponibles() {
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar != null && ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
-                return true; // Hay al menos un ejemplar disponible
+                return true; 
             }
         }
-        return false; // No hay ejemplares disponibles
+        return false; 
     }
 
     public void cambiarEstadoEjemplarDisponibleAPrestado() {
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar != null && ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
                 ejemplar.setEstado("Prestado");
-                break; // Cambia solo el primer ejemplar disponible
+                break; 
             }
         }
     }
