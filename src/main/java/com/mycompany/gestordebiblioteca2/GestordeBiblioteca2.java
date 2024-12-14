@@ -19,6 +19,7 @@ import vista.VentanaRegistroLibros;
 import vista.VentanaVerificarLibro;
 import vista.MenuAdmin;
 import vista.MenuCliente;
+import vista.VentanaBuscarLibro;
 import Modelo.Administrador;
 import Modelo.ArregloCarnet;
 import Modelo.Persona;
@@ -62,6 +63,7 @@ public class GestordeBiblioteca2 {
         VentanaEliminarLibro ventana17 = new VentanaEliminarLibro();
         VentanaModificarLibro ventana18 = new VentanaModificarLibro();
         VentanaPagarMulta2 ventana19 = new VentanaPagarMulta2();
+        VentanaBuscarLibro ventana20 = new VentanaBuscarLibro();
         ArregloPersona persona = new ArregloPersona();
         Administrador administrador = new Administrador();
         ArregloCarnet carnets = new ArregloCarnet();
@@ -82,7 +84,7 @@ public class GestordeBiblioteca2 {
         libros.cargarArchivo("Libros.txt");
         libros.mostrarLibros();
         ControladorAdmin controlador = new ControladorAdmin(ventana1, ventana2, ventana4, ventana5, ventana6, ventana7, ventana8, ventana12, ventana13, ventana14, ventana15, ventana17, ventana18, persona, administrador, carnets, libros, multas, prestamos, carnet, cliente, libro, multa, prestacionLibro);
-        ControladorCliente controlador2 = new ControladorCliente(ventana19,ventana16, ventana3, ventana9, ventana11, ventana10, persona, administrador, carnets, libros, multas, prestamos, carnet, cliente, libro, multa, prestacionLibro, ventana1);
+        ControladorCliente controlador2 = new ControladorCliente(ventana19,ventana16, ventana3, ventana9, ventana11, ventana10, ventana20, persona, administrador, carnets, libros, multas, prestamos, carnet, cliente, libro, multa, prestacionLibro, ventana1);
         Controladorlogin controlador3 = new Controladorlogin(ventana2, ventana1, ventana3);
         controlador3.iniciar();
     }

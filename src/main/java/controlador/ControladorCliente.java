@@ -10,6 +10,7 @@ import vista.VentanaClienteBuscarCarnet;
 import vista.VentanaPrestamoLibro;
 import vista.VentanaPagarMulta;
 import vista.LoginAdminCliente;
+import vista.VentanaBuscarLibro;
 import Modelo.Administrador;
 import Modelo.ArregloCarnet;
 import Modelo.ArregloLibro;
@@ -39,6 +40,7 @@ public class ControladorCliente {
     private VentanaPrestamoLibro ventana4;
     private VentanaPagarMulta ventana5;
     private VentanaPagarMulta2 ventana7;
+    private VentanaBuscarLibro ventana8;
     private ArregloPersona personas;
     private Administrador administrador;
     private ArregloCarnet carnets;
@@ -53,13 +55,14 @@ public class ControladorCliente {
     private LoginAdminCliente ventana6;
     private int id_actual;
 
-    public ControladorCliente(VentanaPagarMulta2 ventana7,MenuCliente ventana1, RegistroCliente ventana2, VentanaClienteBuscarCarnet ventana3, VentanaPrestamoLibro ventana4, VentanaPagarMulta ventana5, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo, LoginAdminCliente ventana6) {
+    public ControladorCliente(VentanaPagarMulta2 ventana7,MenuCliente ventana1, RegistroCliente ventana2, VentanaClienteBuscarCarnet ventana3, VentanaPrestamoLibro ventana4, VentanaPagarMulta ventana5, VentanaBuscarLibro ventana8, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo, LoginAdminCliente ventana6) {
         this.ventana1 = ventana1;
         this.ventana2 = ventana2;
         this.ventana3 = ventana3;
         this.ventana4 = ventana4;
         this.ventana5 = ventana5;
         this.ventana7 = ventana7;
+        this.ventana8 = ventana8;
         this.personas = personas;
         this.administrador = administrador;
         this.carnets = carnets;
@@ -129,6 +132,16 @@ public class ControladorCliente {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana1.btnbuscarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana1.setVisible(false);
+                ventana8.setLocationRelativeTo(null);
+                ventana8.setVisible(true);
+                settableLibro();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
         this.ventana1.btnregresoInicio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -166,7 +179,7 @@ public class ControladorCliente {
         this.ventana4.btnPrestamoLibro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                realizarPrestamo();
+                //realizarPrestamo();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -197,6 +210,23 @@ public class ControladorCliente {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana8.btnregresoInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana8.setVisible(false);
+                ventana1.setLocationRelativeTo(null);
+                ventana1.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana8.btnbuscarLibro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarLibroPorNombre();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        
 
     }
     
@@ -218,8 +248,52 @@ public class ControladorCliente {
         modeloTabla.setRowCount(0);
         Object[] fila = multas.cargarMultasPorCliente(id_actual);
         modeloTabla.addRow(fila);
-    }  
+    }
     
+    public void settableLibro(){
+        String[] cabeceras = {"Nombre", "Autor", "Editorial", "Genero", "Fecha de Publicacion", "Ejemplar", "Estado"};
+        DefaultTableModel modelotabla = new DefaultTableModel(cabeceras,0);
+        this.ventana8.TablaResultados.setModel(modelotabla);
+    }
+    
+    private void buscarLibroPorNombre() {
+    try {
+        String nombreLibro = ventana8.NombreLibroBuscar.getText().trim();
+
+        if (nombreLibro.isEmpty()) {
+            JOptionPane.showMessageDialog(ventana8, "Por favor, ingrese el nombre del libro.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Libro libroEncontrado = libros.buscarLibroPorNombre(nombreLibro);
+
+        if (libroEncontrado != null) {
+            DefaultTableModel modelo = (DefaultTableModel) ventana8.TablaResultados.getModel();
+            modelo.setRowCount(0); 
+            for (Ejemplar ejemplar : libroEncontrado.getEjemplares()) {
+                if (ejemplar != null) {
+                    Object[] fila = {
+                        libroEncontrado.getNombre(),
+                        libroEncontrado.getAutor(),
+                        libroEncontrado.getEditorial(),
+                        libroEncontrado.getGenero(),
+                        libroEncontrado.getFechaPublicacion(),
+                        ejemplar.getID_Ejemplar(),
+                        ejemplar.getEstado()
+                    };
+                    modelo.addRow(fila);
+                }
+            }
+
+            JOptionPane.showMessageDialog(ventana8, "Libro encontrado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(ventana8, "No se encontró el libro con el nombre especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(ventana8, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     private void iniciarSesion() {
         try {
             int id = Integer.parseInt(ventana2.IdInicioSesionCliente.getText().trim());
@@ -323,7 +397,7 @@ public class ControladorCliente {
     }
     
     
-    private void realizarPrestamo() {
+    /*private void realizarPrestamo() {
         try {
             String fechaPrestamo = ventana4.textFechaPrestamo.getText().trim();
             String fechaDevolucion= ventana4.textFechaDevolucion.getText().trim();
@@ -369,7 +443,7 @@ public class ControladorCliente {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(ventana4, "Error: Verifique que los campos numéricos sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
     private void limpiardatosInicio(){
         ventana2.IdInicioSesionCliente.setText("");
     }

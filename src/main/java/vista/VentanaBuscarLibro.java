@@ -8,12 +8,12 @@ package vista;
  *
  * @author Luis
  */
-public class VentanaPagarMulta extends javax.swing.JFrame {
+public class VentanaBuscarLibro extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana11
      */
-    public VentanaPagarMulta() {
+    public VentanaBuscarLibro() {
         initComponents();
     }
 
@@ -30,8 +30,11 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbVisualizarMultas = new javax.swing.JTable();
+        TablaResultados = new javax.swing.JTable();
         btnregresoInicio = new javax.swing.JButton();
+        NombreLibroBuscar = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnbuscarLibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,9 +42,9 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Multas ");
+        jLabel1.setText("Buscar Libro");
 
-        tbVisualizarMultas.setModel(new javax.swing.table.DefaultTableModel(
+        TablaResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -52,7 +55,7 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(tbVisualizarMultas);
+        jScrollPane1.setViewportView(TablaResultados);
 
         btnregresoInicio.setBackground(new java.awt.Color(0, 51, 51));
         btnregresoInicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -63,20 +66,44 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
             }
         });
 
+        NombreLibroBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreLibroBuscarActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Título seleccionado:");
+
+        btnbuscarLibro.setBackground(new java.awt.Color(0, 51, 51));
+        btnbuscarLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnbuscarLibro.setText("Buscar");
+        btnbuscarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarLibroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(btnregresoInicio)
-                .addGap(101, 101, 101)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NombreLibroBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnbuscarLibro))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnregresoInicio)
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,8 +113,13 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnregresoInicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(NombreLibroBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnbuscarLibro))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,17 +142,28 @@ public class VentanaPagarMulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnregresoInicioActionPerformed
 
+    private void NombreLibroBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreLibroBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreLibroBuscarActionPerformed
+
+    private void btnbuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarLibroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnbuscarLibroActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField NombreLibroBuscar;
+    public javax.swing.JTable TablaResultados;
+    public javax.swing.JButton btnbuscarLibro;
     public javax.swing.JButton btnregresoInicio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTable tbVisualizarMultas;
     // End of variables declaration//GEN-END:variables
 }
