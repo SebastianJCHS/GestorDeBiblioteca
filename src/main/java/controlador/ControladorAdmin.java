@@ -41,6 +41,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import vista.VentanaEliminarLibro;
 import vista.VentanaModificarLibro;
+import vista.VentanaVerPrestamos;
 
 public class ControladorAdmin {
     private LoginAdminCliente ventana1;
@@ -57,6 +58,7 @@ public class ControladorAdmin {
     private VentanaEliminarLibro ventana16;
     private VentanaModificarLibro ventana17;
     private VentanaBuscarLibroAdmin ventana18;
+    private VentanaVerPrestamos ventana19;
     private ArregloPersona personas;
     private ArregloCarnet carnets;
     private ArregloLibro libros;
@@ -68,7 +70,7 @@ public class ControladorAdmin {
     private Multa multa;
     private PrestacionLibro prestamo;
 
-    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, VentanaEliminarLibro ventana16, VentanaModificarLibro ventana17, VentanaBuscarLibroAdmin ventana18, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
+    public ControladorAdmin(LoginAdminCliente ventana1, VentanaRegistroAdmin ventana2, RegistroMulta ventana4, VentanaAdminCarnet ventana5, VentanaAgragarMulta ventana6, VentanaAgregarLibro ventana7, VentanaBuscarCarnet ventana8, VentanaRegistroCarnet ventana12, VentanaRegistroLibros ventana13, VentanaVerificarLibro ventana14, MenuAdmin ventana15, VentanaEliminarLibro ventana16, VentanaModificarLibro ventana17, VentanaBuscarLibroAdmin ventana18, VentanaVerPrestamos ventana19, ArregloPersona personas, Administrador administrador, ArregloCarnet carnets, ArregloLibro libros, ArregloMulta multas, ArregloPrestamo prestamos, Carnet carnet, Cliente cliente, Libro libro, Multa multa, PrestacionLibro prestamo) {
         this.ventana1 = ventana1;
         this.ventana2 = ventana2;
         this.ventana4 = ventana4;
@@ -83,6 +85,7 @@ public class ControladorAdmin {
         this.ventana16 = ventana16;
         this.ventana17 = ventana17;
         this.ventana18 = ventana18;
+        this.ventana19 = ventana19;
         this.personas = personas;
         this.carnets = carnets;
         this.libros = libros;
@@ -161,6 +164,16 @@ public class ControladorAdmin {
                 ventana18.setVisible(true);
                 limpiarBuscarLibro();
                 settableBuscarLibro();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana15.btnVerPrestamos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana15.setVisible(false);
+                ventana19.setLocationRelativeTo(null);
+                ventana19.setVisible(true);
+                settablePrestamo();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -418,6 +431,22 @@ public class ControladorAdmin {
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
+        this.ventana19.btnregresoInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana19.setVisible(false);
+                ventana15.setLocationRelativeTo(null);
+                ventana15.setVisible(true);
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        this.ventana19.btnActualizarTablaPrestamos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                settablePrestamo();
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
     }
     
     public void iniciar(){
@@ -539,7 +568,13 @@ public class ControladorAdmin {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(ventana18, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}    
+}
+
+    private void settablePrestamo(){
+        String[] cabeceras = prestamos.getCabecera();
+        DefaultTableModel modeloTabla = new DefaultTableModel(prestamos.getDatos(), cabeceras);
+        ventana19.TablaResultados.setModel(modeloTabla);
+    }   
     
     private void añadirMulta() {
         try {

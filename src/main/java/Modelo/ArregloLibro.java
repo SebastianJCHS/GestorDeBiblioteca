@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 
@@ -213,4 +215,42 @@ public class ArregloLibro implements Interface {
     public void actualizarEstadoMulta(String nombreArchivo, int idCarnet, String nuevoEstadoMulta) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    public void actualizarEstadoEjemplarEnArchivo(String rutaArchivo, Libro libro, Ejemplar ejemplarActualizado) {
+    try {
+        List<String> lineasNuevas = new ArrayList<>();
+
+        // Leer el archivo y actualizar el estado del ejemplar
+        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+
+                if (partes.length == 8) {
+                    String nombreLibro = partes[0].trim();
+                    int idEjemplar = Integer.parseInt(partes[6].trim());
+
+                    if (nombreLibro.equals(libro.getNombre()) && idEjemplar == ejemplarActualizado.getID_Ejemplar()) {
+                        // Modificar solo el estado del ejemplar
+                        partes[7] = ejemplarActualizado.getEstado();
+                        lineasNuevas.add(String.join(",", partes));
+                    } else {
+                        lineasNuevas.add(linea);
+                    }
+                }
+            }
+        }
+
+        // Reescribir el archivo con los datos actualizados
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            for (String linea : lineasNuevas) {
+                writer.write(linea);
+                writer.newLine();
+            }
+        }
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 }

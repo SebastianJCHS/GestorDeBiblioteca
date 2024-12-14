@@ -34,7 +34,6 @@ public class Libro {
         this.nrjemeplares = nrjemeplares;
     }
     
-    
     public String getNombre() {
         return nombre;
     }
@@ -110,30 +109,37 @@ public class Libro {
         return cambiarEstadoEjemplar(IdEjemplar, "Prestado");
     }
    
-    
     public boolean hayEjemplaresDisponibles() {
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar != null && ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
-                return true; 
+                return true; // Hay al menos un ejemplar disponible
             }
         }
-        return false; 
+        return false; // No hay ejemplares disponibles
     }
 
     public void cambiarEstadoEjemplarDisponibleAPrestado() {
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar != null && ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
                 ejemplar.setEstado("Prestado");
-                break; 
+                break; // Cambia solo el primer ejemplar disponible
             }
         }
     }
     
+    public Ejemplar buscarEjemplarPorId(int idEjemplar) {
+        for (Ejemplar ejemplar : ejemplares) {
+            if (ejemplar.getID_Ejemplar() == idEjemplar) {
+                return ejemplar;
+            }
+        }
+        return null;
+    }
+
     public void mostrarLibroyEjemplares (){
         System.out.println("Libro{ "+ "nombre=" + nombre + ", autor=" + autor + ", editorial=" + editorial + ", genero=" + genero +", fechaPublicacion=" + fechaPublicacion);
         for (Ejemplar ejemplare : ejemplares) {
             System.out.println(ejemplare.toString());
         }
     }
-    
 }

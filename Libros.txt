@@ -4,7 +4,7 @@ Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clas
 Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,4,Disponible
 Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,5,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,1,Disponible
-Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,2,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,2,disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,3,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,4,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,5,Disponible

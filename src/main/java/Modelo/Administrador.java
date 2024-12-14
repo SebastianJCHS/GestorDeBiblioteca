@@ -1,8 +1,7 @@
 package Modelo;
 
-import java.io.Serializable;
 import java.util.Random;
-public class Administrador extends Persona implements Serializable{
+public class Administrador extends Persona{
     private String ID_admin;
     
     public Administrador(String ID_admin, String nombres, String apellidos, int edad, String correoElectronico, String telefono, String DNI, String rol) {

@@ -33,6 +33,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         btnMenuMulta = new javax.swing.JButton();
         btnMenuVerificarLibro = new javax.swing.JButton();
         btnRegreso = new javax.swing.JButton();
+        btnVerPrestamos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +81,15 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         btnRegreso.setText("Atras");
 
+        btnVerPrestamos.setBackground(new java.awt.Color(0, 102, 102));
+        btnVerPrestamos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnVerPrestamos.setText("Ver prestamos");
+        btnVerPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPrestamosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,7 +103,8 @@ public class MenuAdmin extends javax.swing.JFrame {
                             .addComponent(btnMenuMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMenuCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMenuRegistroLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                            .addComponent(jLabel6)
+                            .addComponent(btnVerPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btnRegreso)))
@@ -114,7 +125,9 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addComponent(btnMenuMulta)
                 .addGap(18, 18, 18)
                 .addComponent(btnMenuVerificarLibro)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnVerPrestamos)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +138,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -147,6 +160,10 @@ public class MenuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenuVerificarLibroActionPerformed
 
+    private void btnVerPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerPrestamosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -158,6 +175,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     public javax.swing.JButton btnMenuRegistroLibro;
     public javax.swing.JButton btnMenuVerificarLibro;
     public javax.swing.JButton btnRegreso;
+    public javax.swing.JButton btnVerPrestamos;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
