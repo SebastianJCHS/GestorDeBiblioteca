@@ -120,4 +120,10 @@ public class PrestacionLibro {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "PrestacionLibro{" + "fechaPrestamo=" + fechaPrestamo + ", fechaDevolucion=" + fechaDevolucion + ", cliente=" + cliente + ", libro=" + libro + ", ejemplar=" + ejemplar + ", estado=" + estado + '}';
+    }
+    
 }

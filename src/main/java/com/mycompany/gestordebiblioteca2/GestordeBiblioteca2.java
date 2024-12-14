@@ -87,7 +87,7 @@ public class GestordeBiblioteca2 {
         multas.cargarArchivo("Multas.txt");
         libros.cargarArchivo("Libros.txt");
         prestamos.cargarPrestamosDesdeArchivo("Prestamos.txt", persona, libros);
-        libros.mostrarLibros();
+        prestamos.mostrar();
         ControladorAdmin controlador = new ControladorAdmin(ventana1, ventana2, ventana4, ventana5, ventana6, ventana7, ventana8, ventana12, ventana13, ventana14, ventana15, ventana17, ventana18, ventana21, ventana22, persona, administrador, carnets, libros, multas, prestamos, carnet, cliente, libro, multa, prestacionLibro);
         ControladorCliente controlador2 = new ControladorCliente(ventana19,ventana16, ventana3, ventana9, ventana11, ventana10, ventana20, persona, administrador, carnets, libros, multas, prestamos, carnet, cliente, libro, multa, prestacionLibro, ventana1);
         Controladorlogin controlador3 = new Controladorlogin(ventana2, ventana1, ventana3);

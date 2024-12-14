@@ -30,7 +30,6 @@ public class RegistroMulta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnAgregarMulta = new javax.swing.JButton();
         btnregresoInicio = new javax.swing.JButton();
-        btnAgregarMulta1 = new javax.swing.JButton();
         btnActualizarTabla = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaMulta = new javax.swing.JTable();
@@ -60,16 +59,6 @@ public class RegistroMulta extends javax.swing.JFrame {
         btnregresoInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnregresoInicioActionPerformed(evt);
-            }
-        });
-
-        btnAgregarMulta1.setBackground(new java.awt.Color(0, 102, 102));
-        btnAgregarMulta1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAgregarMulta1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarMulta1.setText("Cancelar Multa");
-        btnAgregarMulta1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarMulta1ActionPerformed(evt);
             }
         });
 
@@ -104,8 +93,6 @@ public class RegistroMulta extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(btnAgregarMulta)
-                .addGap(58, 58, 58)
-                .addComponent(btnAgregarMulta1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnActualizarTabla)
                 .addGap(57, 57, 57))
@@ -129,7 +116,6 @@ public class RegistroMulta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarMulta)
-                    .addComponent(btnAgregarMulta1)
                     .addComponent(btnActualizarTabla))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,10 +146,6 @@ public class RegistroMulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarMultaActionPerformed
 
-    private void btnAgregarMulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMulta1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarMulta1ActionPerformed
-
     private void btnActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarTablaActionPerformed
@@ -177,7 +159,6 @@ public class RegistroMulta extends javax.swing.JFrame {
     public javax.swing.JTable TablaMulta;
     public javax.swing.JButton btnActualizarTabla;
     public javax.swing.JButton btnAgregarMulta;
-    public javax.swing.JButton btnAgregarMulta1;
     public javax.swing.JButton btnregresoInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

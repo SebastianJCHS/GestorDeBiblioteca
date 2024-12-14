@@ -174,6 +174,7 @@ public class ControladorAdmin {
                 ventana19.setLocationRelativeTo(null);
                 ventana19.setVisible(true);
                 settablePrestamo();
+                actualizarTablaAdministrador();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -304,7 +305,7 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana7.setVisible(false);
-                
+                limpiarCamposLibro();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -344,7 +345,7 @@ public class ControladorAdmin {
                 ventana4.setVisible(false);
                 ventana15.setLocationRelativeTo(null);
                 ventana15.setVisible(true);
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
 
@@ -412,6 +413,7 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
             modificarLibro();
+            limpiarModificarLibro();
             }
         });
         this.ventana18.btnregresoInicio.addActionListener(new ActionListener() {
@@ -444,6 +446,7 @@ public class ControladorAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 settablePrestamo();
+                actualizarTablaAdministrador();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -575,6 +578,25 @@ public class ControladorAdmin {
         DefaultTableModel modeloTabla = new DefaultTableModel(prestamos.getDatos(), cabeceras);
         ventana19.TablaResultados.setModel(modeloTabla);
     }   
+    
+    public void actualizarTablaAdministrador() {
+    // Limpia la tabla actual
+    DefaultTableModel modeloTablaAdministrador = (DefaultTableModel) ventana19.TablaResultados.getModel();
+    modeloTablaAdministrador.setRowCount(0);
+    // Recorre los préstamos y agrégalos a la tabla
+    PrestacionLibro[] listaPrestamos = prestamos.Regresarprestamos();
+    for (PrestacionLibro prestamo : listaPrestamos) {
+        modeloTablaAdministrador.addRow(new Object[]{
+            prestamo.getFechaPrestamo(),
+            prestamo.getFechaDevolucion(),
+            prestamo.getCliente().getNombres(),
+            prestamo.getLibro().getNombre(),
+            prestamo.getEjemplar().getID_Ejemplar(),
+            prestamo.getEjemplar().getEstado()
+        });
+    }
+}
+
     
     private void añadirMulta() {
         try {

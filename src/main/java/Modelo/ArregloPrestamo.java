@@ -2,9 +2,12 @@ package Modelo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArregloPrestamo {
     private PrestacionLibro[] Prestamo;
@@ -58,6 +61,12 @@ public class ArregloPrestamo {
         return listaPrestamos;
     }
     
+    public void mostrar(){
+        PrestacionLibro[] todoslosprestamos = Regresarprestamos();
+        for (PrestacionLibro prestamo : todoslosprestamos) {
+            System.out.println(prestamo.toString());
+        }
+    }
     public String[] getCabecera() {
         return cabecera;
     }
@@ -144,4 +153,37 @@ public class ArregloPrestamo {
         }
         return null; // Si no se encuentra
     }
+    
+    public void actualizarArchivoPrestamos(String rutaArchivo, String titulo, int id, String nuevoEstado) {
+    File archivo = new File(rutaArchivo);
+    List<String> lineasActualizadas = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+        String linea;
+
+        while ((linea = reader.readLine()) != null) {
+            String[] partes = linea.split(",");
+            if (partes.length >= 8) { // Validar que tenga al menos 8 columnas
+                if (partes[5].equalsIgnoreCase(titulo) && partes[6].equals(String.valueOf(id))) {
+                    partes[7] = nuevoEstado; // Actualizar estado
+                    linea = String.join(",", partes); // Reconstruir la línea
+                }
+            }
+            lineasActualizadas.add(linea);
+        }
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo: " + e.getMessage());
+        return;
+    }
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
+        for (String lineaActualizada : lineasActualizadas) {
+            writer.write(lineaActualizada);
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        System.out.println("Error al escribir en el archivo: " + e.getMessage());
+    }
+}
+
 }

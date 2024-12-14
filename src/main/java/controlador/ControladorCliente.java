@@ -181,12 +181,14 @@ public class ControladorCliente {
             @Override
             public void actionPerformed(ActionEvent e) {
                 realizarPrestamo();
+                limpiarCamposPrestamo();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
         this.ventana4.btnDevolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                devolverLibro();
                 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
@@ -458,7 +460,61 @@ public class ControladorCliente {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(ventana4, "Error: Verifique que los campos numéricos sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }   
+    }
+    private void devolverLibro() {
+    try {
+        String tituloLibro = ventana4.textTituloSeleccionado.getText().trim();
+        int numeroEjemplar = Integer.parseInt(ventana4.textNroEjemplar.getText().trim());
+        String fechaDevolucion = ventana4.textFechaDevolucion.getText().trim();
+
+        if (tituloLibro.isEmpty() || numeroEjemplar <= 0 || fechaDevolucion.isEmpty()) {
+            JOptionPane.showMessageDialog(ventana4, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Buscar el libro
+        Libro libro = libros.buscarLibroPorNombre(tituloLibro);
+        if (libro == null) {
+            JOptionPane.showMessageDialog(ventana4, "No se encontró el libro ingresado.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Buscar el ejemplar específico
+        Ejemplar ejemplar = libro.buscarEjemplarPorId(numeroEjemplar);
+        if (ejemplar == null) {
+            JOptionPane.showMessageDialog(ventana4, "No se encontró el ejemplar ingresado.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Verificar si el ejemplar está prestado
+        if (!ejemplar.getEstado().equalsIgnoreCase("prestado")) {
+            JOptionPane.showMessageDialog(ventana4, "El ejemplar no está en estado 'prestado'.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Buscar el préstamo correspondiente
+        PrestacionLibro prestamoEncontrado = prestamos.buscarPrestamo(tituloLibro, numeroEjemplar);
+        if (prestamoEncontrado == null) {
+            JOptionPane.showMessageDialog(ventana4, "No se encontró el préstamo correspondiente.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        prestamoEncontrado.setFechaDevolucion(fechaDevolucion);
+        ejemplar.setEstado("disponible");
+        prestamoEncontrado.DevolverLibro();
+
+        // Actualizar el archivo de préstamos
+        prestamos.actualizarArchivoPrestamos("Prestamos.txt",tituloLibro, numeroEjemplar,"disponible");
+
+        // Actualizar el archivo de libros
+        libros.actualizarEstadoEjemplarEnArchivo("Libros.txt", libro, ejemplar);
+
+        JOptionPane.showMessageDialog(ventana4, "Libro devuelto con éxito. Estado actualizado.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        limpiarCamposPrestamo();
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(ventana4, "Error: Verifique que los campos numéricos sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     private void limpiardatosInicio(){
         ventana2.IdInicioSesionCliente.setText("");

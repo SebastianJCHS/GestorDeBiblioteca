@@ -72,7 +72,7 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         btnMenuVerificarLibro.setBackground(new java.awt.Color(0, 102, 102));
         btnMenuVerificarLibro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnMenuVerificarLibro.setText("Verificar libros");
+        btnMenuVerificarLibro.setText("Verificar ejemplares");
         btnMenuVerificarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuVerificarLibroActionPerformed(evt);
