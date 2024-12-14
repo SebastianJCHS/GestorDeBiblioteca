@@ -5,7 +5,7 @@ Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clas
 Don Quijote de la Mancha,Miguel de Cervantes Saavedra,Ediciones Akal,Novela Clasica,1605,5,5,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,1,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,2,Disponible
-Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,3,Disponible
+Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,3,prestado
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,4,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,5,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,6,Disponible
@@ -14,8 +14,8 @@ Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo m�
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,9,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,10,Disponible
 Cien años de soledad,Gabriel García Marquez,Editorial Sudamericana,Realismo mágico,2024,11,11,Disponible
-Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,1,Disponible
-Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,2,Disponible
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,1,prestado
+Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,2,prestado
 Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,3,Disponible
 Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,4,Disponible
 Trilce,Cesar Vallejo,Editorial Limbo,Realismo,1989,6,5,Disponible

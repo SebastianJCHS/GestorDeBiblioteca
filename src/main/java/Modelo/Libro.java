@@ -34,7 +34,6 @@ public class Libro {
         this.nrjemeplares = nrjemeplares;
     }
     
-    
     public String getNombre() {
         return nombre;
     }
@@ -110,7 +109,6 @@ public class Libro {
         return cambiarEstadoEjemplar(IdEjemplar, "Prestado");
     }
    
-    
     public boolean hayEjemplaresDisponibles() {
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar != null && ejemplar.getEstado().equalsIgnoreCase("Disponible")) {
@@ -129,11 +127,19 @@ public class Libro {
         }
     }
     
+    public Ejemplar buscarEjemplarPorId(int idEjemplar) {
+        for (Ejemplar ejemplar : ejemplares) {
+            if (ejemplar.getID_Ejemplar() == idEjemplar) {
+                return ejemplar;
+            }
+        }
+        return null;
+    }
+
     public void mostrarLibroyEjemplares (){
         System.out.println("Libro{ "+ "nombre=" + nombre + ", autor=" + autor + ", editorial=" + editorial + ", genero=" + genero +", fechaPublicacion=" + fechaPublicacion);
         for (Ejemplar ejemplare : ejemplares) {
             System.out.println(ejemplare.toString());
         }
     }
-    
 }

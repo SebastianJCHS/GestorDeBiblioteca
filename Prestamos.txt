@@ -1,0 +1,5 @@
+null,null,null,Cien años de soledad,1,15-12-2024,25-12-2024,prestado
+Ivan,Nunez,1234,Trilce,1,02-01-2025,12-01-2025,prestado
+Luis,Morales,123456789,Trilce,2,02-01-2025,12-01-2025,prestado
+Ivan,Nunez,1234,Cien años de soledad,3,02-01-2025,12-01-2025,prestado
+Ivan,Nunez,1234,Trilce,2,02-01-2025,15-01-2025,prestado
