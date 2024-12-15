@@ -1,1 +1,2 @@
 100.0,2024-12-14,Ivan,Nunez,20,ejemplo2@gmail.com,123456789,1234,Cliente,1234,bloqueado,pendiente
+100.0,2024-12-14,Luis,Guevara,18,lg@gmail.com,98555698,5565865,Cliente,5565865,activo,pagado

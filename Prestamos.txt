@@ -1,1 +1,2 @@
 14/12/2024,16/12/2024,Luis,Morales,123456789,Don quijote de la mancha,3,prestado
+14/12/2024,18/12/2024,Luis,Guevara,5565865,trilce,1,disponible

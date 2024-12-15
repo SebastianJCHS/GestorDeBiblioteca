@@ -16,3 +16,14 @@ Don quijote de la mancha,Miguel de cervantes,Editorial Sudamerica,Realismo,1985,
 Don quijote de la mancha,Miguel de cervantes,Editorial Sudamerica,Realismo,1985,10,8,Disponible
 Don quijote de la mancha,Miguel de cervantes,Editorial Sudamerica,Realismo,1985,10,9,Disponible
 Don quijote de la mancha,Miguel de cervantes,Editorial Sudamerica,Realismo,1985,10,10,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,1,disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,2,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,3,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,4,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,5,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,6,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,7,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,8,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,9,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,10,Disponible
+trilce,Cesar,Editorial Sudamerica,Realismo Magico,1985,11,11,Disponible

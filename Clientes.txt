@@ -1,3 +1,4 @@
 Luis,Morales,20,ejemplo@gmail.com,123456789,123456789,Cliente,123456789,activo
 Ivan,Nunez,20,ejemplo2@gmail.com,123456789,1234,Cliente,1234,bloqueado
 Mercado,Fausto,20,ejemplo3@gmail.com,123456789,741852963,Cliente,741852963,activo
+Luis,Guevara,18,lg@gmail.com,98555698,5565865,Cliente,5565865,activo
